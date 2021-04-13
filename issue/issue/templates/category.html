@@ -1,0 +1,20 @@
+{% extends 'product/main.html' %} 
+{% block layout_title %} Category {% endblock layout_title %}
+{% block common_layout %}
+<center>Category Page:</center>
+
+<div class="container">
+
+  <div class="card">
+  <div class="card-body">
+   <form action ="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+
+    <label>&nbsp;</label><input type="submit" class="btn btn-primary" value="Submit" />
+  </form>
+</div>
+</div>
+</div>
+{% endblock common_layout %}

@@ -1,0 +1,35 @@
+{% extends 'product/main.html' %} 
+{% block layout_title %} Brand Entry {% endblock layout_title %}
+{% block common_layout %}
+{% comment %} <center>Brand Entry Page:</center> {% endcomment %}
+
+<div class="container">
+
+  <div class="card">
+  <div class="card-body">
+   <form action ="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+
+    <label>&nbsp;</label><input type="submit" class="btn btn-primary" value="Submit" />
+  </form>
+</div>
+</div>
+</div>
+
+<style type="text/css">
+
+.errorlist
+    {
+        color: red;
+    }
+
+.error input, .error select {
+border: 2px red solid;
+}
+
+label{width:15%;font-weight:bold;}
+
+</style>
+{% endblock common_layout %}

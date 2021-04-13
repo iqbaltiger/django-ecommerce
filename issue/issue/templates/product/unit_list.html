@@ -1,0 +1,97 @@
+{% extends 'product/main.html' %}
+{% block csslink %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css" type="text/css">
+
+{% endblock csslink %}
+
+
+{% block common_layout %}
+
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   <div class="text-center alert alert-{{ message.tags }}">
+             {{ message|safe }}
+         </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<center>Unit List:</center>
+
+<div class="container">
+  <div class="card">
+  <div class="card-body">
+    <center><a class="btn btn-primary" href="{% url 'unit'  %}"
+                    >Add Unit</a>
+    </center>                
+  </div>
+</div>  
+  <div class="card">
+  <div class="card-body">
+    <table class="table" id="unitlist">
+      <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Unit Name</th>
+        
+        <th scope="col">Unit Short Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>-
+        </tr>
+    </thead>
+    <tbody>
+    {% for unit in unitlist %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{% if unit.unit_name %}{{ unit.unit_name }} {% endif %}</td>
+        
+        <td>{% if unit.unit_short_name %}{{ unit.unit_short_name }} {% endif %}</td>
+        <td><a class="btn btn-info" href="{% url 'unitupdate' unit.id %}"
+                    >Edit</a
+                ></td>
+               
+        <td><a class="btn btn-danger" href="{% url 'unitdelete' unit.id %}"
+                    >Delete</a
+                ></td>         
+        </tr>
+        {% endfor %}  
+        
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% block rawjs %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>  
+ 
+
+<script type="text/javascript"> 
+  
+  $(document).ready(function() {
+    $('#unitlist').DataTable();
+} );
+ </script> 
+ 
+
+ 
+{% endblock rawjs %}
+
+
+
+
+  
+</div>
+
+{% endblock common_layout %}

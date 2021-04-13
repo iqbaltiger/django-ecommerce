@@ -1,0 +1,114 @@
+{% extends 'product/main.html' %}
+{% block csslink %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css" type="text/css">
+
+{% endblock csslink %}
+
+
+{% block common_layout %}
+
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   <div class="text-center alert alert-{{ message.tags }}">
+             {{ message|safe }}
+         </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<center>Supplier List:</center>
+
+<div class="container_no">
+  <div class="card">
+  <div class="card-body">
+    <center><a class="btn btn-primary" href="{% url 'supplier'  %}"
+                    >Add supplier</a>
+    </center>                
+  </div>
+</div>  
+  <div class="card_no">
+  <div class="card-body">
+    <table class="table" id="supplierlist">
+      <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Supplier Name</th>
+        <th scope="col"> Address</th>
+        <th scope="col"> Mobile</th>
+        <th scope="col"> Email</th>
+        <th scope="col"> Website</th>
+        
+        <th scope="col">Short Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>-
+        </tr>
+    </thead>
+    <tbody>
+    {% for supplier in supplierlist %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{% if supplier.supplier_name %}{{ supplier.supplier_name }} {% endif %}</td>
+        
+        <td>{% if supplier.supplier_address %}{{ supplier.supplier_address }} {% endif %}</td>
+        <td>{% if supplier.supplier_mobile %}{{ supplier.supplier_mobile }} {% endif %}</td>
+        <td>{% if supplier.supplier_email %}{{ supplier.supplier_email }} {% endif %}</td>
+        <td>{% if supplier.supplier_website %}{{ supplier.supplier_website }} {% endif %}</td>
+        <td>{% if supplier.status %}{{ supplier.status }} {% endif %}</td>
+        
+        <td><a class="btn btn-info" href="{% url 'supplierupdate' supplier.id %}"
+                    >Edit</a
+                ></td>
+               
+        <td><a class="btn btn-danger" href="{% url 'supplierdelete' supplier.id %}"
+                    >Delete</a
+                ></td>         
+        </tr>
+        {% endfor %}  
+        
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% block rawjs %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>  
+ 
+
+<script type="text/javascript"> 
+  
+  $(document).ready(function() {
+    $('#supplierlist').DataTable();
+} );
+ </script> 
+ 
+
+ 
+{% endblock rawjs %}
+
+
+
+
+  
+</div>
+
+<style>
+
+#supplierlist_filter{float:revert;margin-left:300%;}
+.dataTables_length, .dataTables_info, .dt-buttons{padding-left:4.5rem;}
+div.dataTables_wrapper div.dataTables_paginate{margin-left:150%;margin-top:10%;"}
+
+</style>
+
+{% endblock common_layout %}

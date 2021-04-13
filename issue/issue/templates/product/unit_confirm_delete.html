@@ -1,0 +1,22 @@
+{% extends 'product/main.html' %}
+
+
+{% block title %} Unit Delete {% endblock title %}
+{% block common_layout %}
+<center>Unit Delete Page:</center>
+
+<div class="container">
+
+  <div class="card">
+  <div class="card-body">
+   <form method="post">{% csrf_token %}
+	<p>Are you sure you want to delete "{{ object }}"?</p>
+	<input type="submit" value="Confirm">
+</form>
+</div>
+</div>
+</div>
+{% endblock common_layout %}
+
+
+

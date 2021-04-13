@@ -1,0 +1,61 @@
+{% extends 'product/main.html' %} 
+{% block layout_title %} Category {% endblock layout_title %}
+{% block common_layout %}
+<center>Category List:</center>
+
+<div class="container">
+  <div class="card">
+  <div class="card-body">
+    <center><a class="btn btn-primary" href="{% url 'category'  %}"
+                    >Add Category</a>
+    </center>                
+  </div>
+</div>  
+  <div class="card">
+  <div class="card-body">
+        <table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Parent Category</th>
+        <th scope="col">Image</th>
+        <th scope="col">Favicon Icon</th>
+        <th scope="col">Active</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for category in catlist %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{% if category.cat_name %}{{ category.cat_name }} {% endif %}</td>
+        <td>{% if category.parent_cat %}{{ category.parent_cat }} {% else %} - {% endif %}</td>
+        <td>{% if category.category_image %} <img src="{{ category.category_image.url }}" width="80" height="80"> {% endif %}</td>
+        <td>{% if category.category_favicon_icon %} <img src="{{ category.category_favicon_icon.url }}" width="20" height="20"> {% endif %}</td>
+        <td>{% if category.status == True %}Active {% else %} - {% endif %}</td>
+        <td><a class="btn btn-info" href="{% url 'editcategory' category.id %}"
+                    >Edit</a
+                ></td>
+        <td><a class="btn btn-danger" href="{% url 'deletecategory' category.id %}"
+                    >Delete</a
+                ></td>        
+        </tr>
+        {% endfor %}  
+        
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  
+</div>
+
+{% endblock common_layout %}

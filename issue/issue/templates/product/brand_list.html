@@ -1,0 +1,74 @@
+{% extends 'product/main.html' %}
+
+{% block common_layout %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   <div class="text-center alert alert-{{ message.tags }}">
+             {{ message|safe }}
+         </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<center>Brand List:</center>
+
+<div class="container">
+  <div class="card">
+  <div class="card-body">
+    <center><a class="btn btn-primary" href="{% url 'brand'  %}"
+                    >Add Brand</a>
+    </center>                
+  </div>
+</div>  
+  <div class="card">
+  <div class="card-body">
+        <table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Brand Image</th>
+        <th scope="col">Brand Website</th>
+        <th scope="col">Active</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>-
+        </tr>
+    </thead>
+    <tbody>
+    {% for brand in brandlist %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{% if brand.brand_name %}{{ brand.brand_name }} {% endif %}</td>
+        
+        <td>{% if brand.brand_image %} <img src="{{ brand.brand_image.url }}" width="80" height="80"> {% endif %}</td>
+        <td>{% if brand.website %}<a href="{{ brand.website }}">{{ brand.website }}</a> {% else %} - {% endif %}</td>
+
+
+        <td>{% if brand.status == True %}Active {% else %} - {% endif %}</td>
+         <td><a class="btn btn-info" href="{% url 'brandupdate' brand.id %}"
+                    >Edit</a
+                ></td>
+               
+        <td><a class="btn btn-danger" href="{% url 'Branddelete' brand.id %}"
+                    >Delete</a
+                ></td>         
+        </tr>
+        {% endfor %}  
+        
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+  
+
+
+
+
+  
+</div>
+
+{% endblock common_layout %}

@@ -1,0 +1,101 @@
+{% extends 'product/main.html' %}
+{% block csslink %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css" type="text/css">
+
+{% endblock csslink %}
+
+
+{% block common_layout %}
+
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   <div class="text-center alert alert-{{ message.tags }}">
+             {{ message|safe }}
+         </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<center>Currency List:</center>
+
+<div class="container_no">
+  <div class="card">
+  <div class="card-body">
+    <center><a class="btn btn-primary" href="{% url 'currency'  %}"
+                    >Add Currency</a>
+    </center>                
+  </div>
+</div>  
+  <div class="card_no">
+  <div class="card-body_no">
+    <table class="table" id="currencylist">
+      <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Currency Name</th>
+        
+        <th scope="col">Currency status</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>-
+        </tr>
+    </thead>
+    <tbody>
+    {% for currency in currencylist %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{% if currency.currency_name %}{{ currency.currency_name }} {% endif %}</td>
+        
+        <td>{% if currency.currency_position %}{{ currency.currency_position }} {% endif %}</td>
+        <td><a class="btn btn-info" href="{% url 'currencyupdate' currency.id %}"
+                    >Edit</a
+                ></td>
+               
+        <td><a class="btn btn-danger" href="{% url 'currencydelete' currency.id %}"
+                    >Delete</a
+                ></td>         
+        </tr>
+        {% endfor %}  
+        
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% block rawjs %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>  
+ 
+
+<script type="text/javascript"> 
+  
+  $(document).ready(function() {
+    $('#currencylist').DataTable();
+} );
+ </script> 
+ 
+
+ 
+{% endblock rawjs %}
+
+
+<style>
+
+
+
+</style>
+
+  
+</div>
+
+{% endblock common_layout %}

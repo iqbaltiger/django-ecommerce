@@ -1,0 +1,143 @@
+{% extends 'product/main.html' %}
+{% block title %} Product List {% endblock title %}
+{% block csslink %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css" type="text/css">
+
+{% endblock csslink %}
+
+
+{% block common_layout %}
+
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   <div class="text-center alert alert-{{ message.tags }}">
+             {{ message|safe }}
+         </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<center>Product List:</center>
+
+<div class="container_no">
+  <div class="card_no">
+  <div class="card-body_no">
+    <center><a class="btn btn-primary" href="{% url 'productentry'  %}"
+                    >Add Product</a>
+    </center>                
+  </div>
+</div>  
+  <div class="card_no">
+  
+    <table class="table" id="productlist">
+    <div class="card-body">
+      <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col"> Category</th>
+        <th scope="col"> Product Image</th>
+        <th scope="col"> Brand</th>
+        <th scope="col"> Unit</th>
+        <th scope="col"> Supplier Price</th>
+        <th scope="col"> Sell Price</th>
+        
+        <th scope="col">Supplier</th>
+        <th scope="col">Details</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>-
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in productlist %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{% if product.product_name %}{{ product.product_name }} {% endif %}</td>
+        
+        <td>{% if product.category %}{{ product.category }} {% endif %}</td>
+        <td>{% if product.image %} <img src="{{ product.image.url }}" width="80" height="80"> {% endif %}</td>
+        <td>{% if product.brand %}{{ product.brand }} {% endif %}</td>
+        <td>{% if product.unit %}{{ product.unit }} {% endif %}</td>
+        <td>{% if product.supplier_price %}{{ product.supplier_price }} {% endif %}</td>
+        <td>{% if product.sell_price %}{{ product.sell_price }} {% endif %}</td>
+        <td>{% if product.supplier %}{{ product.supplier }} {% endif %}</td>
+        <td> <a class="btn btn-info" target="_blank" href="{% url 'productdetails' product.id %}"
+                    >Details</a</td>
+        
+         <td><a class="btn btn-info" href="{% url 'productupdate' product.id %}"
+                    >Edit</a
+                ></td>
+               
+        <td><a class="btn btn-danger" href="{% url 'productdelete' product.id %}"
+                    >Delete</a
+                ></td>   
+        </tr>
+        {% endfor %}  
+        
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+{% block rawjs %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>  
+ 
+
+<script type="text/javascript"> 
+  
+  $(document).ready(function() {
+    $('#productlist').DataTable();
+
+  var element = document.getElementById("productlist_wrapper");
+  element.classList.remove("form-inline");
+
+  var filter_search = document.getElementById('productlist_filter')
+  filter_search
+} );
+ </script> 
+ 
+
+ 
+{% endblock rawjs %}
+
+
+
+
+<style>
+
+div.dataTables_wrapper div.dataTables_filter{text-align:left;}
+li#productlist_previous a{    padding: 6px 12px;
+    background-color: #337ab7;
+    color: #fff;
+}
+li#productlist_next a{
+
+  padding: 6px 12px;
+    background-color: #337ab7;
+    color: #fff;
+}
+
+li.paginate_button a{
+
+  padding: 6px 12px;
+    background-color: #ddd;
+
+}
+
+</style>
+  
+</div>
+
+{% endblock common_layout %}
