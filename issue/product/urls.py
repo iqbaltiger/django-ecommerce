@@ -62,7 +62,9 @@ urlpatterns = [
 
     #category frontend
     path('productdetails/<int:pk>',ProductDetails.as_view(),name="productdetails"),
-    path('categorydetails/<int:pk>',CategoryDetails.as_view(),name="categorydetails") 
+    path('categorydetails/<int:pk>',CategoryDetails.as_view(),name="categorydetails"),
+    path('brandbasedproduct/', views.load_category_based_product,name="brandbasedproduct"),
+    
          
 ]
 

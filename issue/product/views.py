@@ -9,6 +9,10 @@ from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
+
+
 
 
 # Create your views here.
@@ -273,17 +277,34 @@ class ProductDetails(SuccessMessageMixin,DetailView):
     
 class CategoryDetails(SuccessMessageMixin,ListView):
     model = Product
-    template_name = 'product/category.html'
+    template_name = 'product/temp_category.html'
 
     def get_context_data(self,**kwargs):
 
         context = super().get_context_data(**kwargs)
         id = self.kwargs['pk']
-        # print(id, [o.category.id for o in Product.objects.all()], Category.objects.get(id=id), Product.objects.filter(category__id=id).all())
+        #print(id, [o.category.id for o in Product.objects.all()], Category.objects.get(id=id), Product.objects.filter(category__id=id).all())
         category = get_object_or_404(Category,pk=id)
-        #context['categoryinfo'] = get_object_or_404(Category,pk=id)
+        context['categoryinfo'] = get_object_or_404(Category,pk=id)
         # context['product_list'] = Product.objects.filter(category__id=id).all()
-        context['categories'] = category.product_category.all()
-        
+        context['brandlist'] = Brand.objects.all()
+        context['categories'] = Category.objects.all()
+        context['allProducts'] = category.product_category.all()
+        print(context['allProducts'])
 
         return context    
+
+
+def load_category_based_product(request):
+    brandId = request.GET.get('brand', None)
+    print("brandId:",brandId)
+    brand = get_object_or_404(Brand, pk=brandId)
+    
+    
+    # data = {
+
+    #     "backdata": brandId
+    # }  
+    return JsonResponse(model_to_dict(brand))
+
+

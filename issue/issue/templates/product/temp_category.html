@@ -137,7 +137,7 @@
                     <div class="topbar-text dropdown disable-autohide ml-3">
                         <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                             <img class="mr-2" width="20" src="{% static 'front_assets/img/flags/en.png' %}" alt="English">Eng / $</a>
-                        <ul class="dropdown-menu dropdown-menu-right" style="">
+                        <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-item">
                                 <select class="custom-select custom-select-sm">
                                     <option value="usd">$ USD</option>
@@ -872,271 +872,274 @@
             </nav>
         </div>
         <div class="product-details-inner mb-5">
-            <div class="container">
-                <div class="product-header row no-gutters align-items-center border-bottom pb-2 mb-5">
-                    <div class="col-md-8">
-                        <h1 class="product-title fs-23 font-weight-400 mb-3">{{ product.product_name }}</h1>
-                        <ul class="entry-meta d-flex flex-wrap align-items-center font-weight-500 list-unstyled m-0">
-                            <li class="meta-brand position-relative px-2 px-md-3"> Brand: <a href="{{ product.brand.website }}" class="meta-value">{{ product.brand }}</a></li>
-                            <li class="position-relative px-2 px-md-3">
-                                <div class="product-rating d-flex align-items-center">
-                                    <div class="star-rating mb-0 mr-1">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-empty"></i>
-                                    </div>
-                                    <a href="#" class="review-link text-muted font-weight-400 fs-14">
-                                        (<span class="count">1</span>Review)
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="meta-sku position-relative px-2 px-md-3"> SKU: <span class="meta-value">AB123456789</span></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 mt-4 mt-md-0">
-                        <div class="social-links text-md-right d-flex justify-content-md-end">
-                            <a href="#" class="fb d-flex align-items-center justify-content-center fs-17 text-white rounded mr-2"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="tw d-flex align-items-center justify-content-center fs-17 text-white rounded mr-2"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="ins d-flex align-items-center justify-content-center fs-17 text-white rounded mr-2"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="pr d-flex align-items-center justify-content-center fs-17 text-white rounded mr-2"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#" class="li d-flex align-items-center justify-content-center fs-17 text-white rounded mr-2"><i class="fab fa-linkedin-in"></i></a>
+
+        <div class="container" style="transform: none;">
+            <div class="row" style="transform: none;">
+                <div class="col-md-3 d-none d-lg-block leftSidebar mb-3 pr-xl-4"
+                    style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1505.5px;">
+        
+        
+        
+                    <div class="theiaStickySidebar"
+                        style="padding-top: 0px; padding-bottom: 1px; position: absolute; transform: translateY(657.5px); top: 0px; width: 296px;">
+                        <div class="card mb-4">
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <h2 class="mb-0 fs-17">Accessories</h2>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-sliders card-header_icon">
+                                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                                    <line x1="1" y1="14" x2="7" y2="14"></line>
+                                    <line x1="9" y1="8" x2="15" y2="8"></line>
+                                    <line x1="17" y1="16" x2="23" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                <ul class="subcategories list-unstyled">
+        
+                                    {% for category in categories %}
+                                    <li>
+                                        <a href="{% url 'categorydetails' category.id %}"
+                                            class="d-flex align-items-center mb-2 text-black">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="feather feather-chevron-right mr-1">
+                                                <polyline points="9 18 15 12 9 6"></polyline>
+                                            </svg>
+                                            <span class="name">{{ category.cat_name }}</span>
+                                            <span class="total fs-12 text-black-50 ml-2">{{ category.product_category.count }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
-                        <!-- /.End of social link -->
+                        <div class="card mb-4">
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <h2 class="mb-0 fs-17">Price</h2>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-sliders card-header_icon">
+                                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                                    <line x1="1" y1="14" x2="7" y2="14"></line>
+                                    <line x1="9" y1="8" x2="15" y2="8"></line>
+                                    <line x1="17" y1="16" x2="23" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div class="card-body">
+                                
+                                <div class="js-range-slider irs-hidden-input" tabindex="-1"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center justify-content-between">
+                                <h2 class="mb-0 fs-17">Preferred Brand</h2>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-sliders card-header_icon">
+                                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                                    <line x1="1" y1="14" x2="7" y2="14"></line>
+                                    <line x1="9" y1="8" x2="15" y2="8"></line>
+                                    <line x1="17" y1="16" x2="23" y2="16"></line>
+                                </svg>
+                            </div>
+                            <!-- <div class="card-body">
+        
+                                {% for brand in brandlist %}
+                                <div class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" class="checkbox_check" id="{{ brand }}">
+                                    <label class="custom-control-label" for="brand1">
+                                        {{ brand.brand_name }}<span class="count text-muted fs-12 ml-1">({{ brand.product_brand.count }})</span>
+                                    </label>
+                                </div>
+                                {% endfor %}
+
+                              
+                            </div> -->
+
+                            <div class="card-body">
+                                <!-- {% for brand in brandlist %}
+                                <div class="mb-2">
+                                    <input type="checkbox" class="checkbox_check" id="brand{{brand.id}}">
+                                    <span class="custom-control-label" for="brand1">
+                                        {{ brand.brand_name }}<span class="count text-muted fs-12 ml-1">({{ brand.product_brand.count }})</span>
+                                    </span>
+                                </div>
+                                {% endfor %} -->
+
+                                {% for brand in brandlist %}
+                                   <input type="checkbox" class="checkbox_check" id="{{brand.id}}">
+
+                                {% endfor %}
+                            </div>    
+
+                        </div>
+                        <div class="resize-sensor"
+                            style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div class="resize-sensor-expand"
+                                style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                                <div
+                                    style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 306px; height: 858px;">
+                                </div>
+                            </div>
+                            <div class="resize-sensor-shrink"
+                                style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                                <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="wrapper">
-                            <!-- Product Images & Alternates -->
-                            <div class="product-images">
-                                <div class="row">
-                                    <div class="col-3 col-sm-2">
-                                        <!-- Begin product thumb nav -->
-                                        <ul class="thumb-nav">
-                                            <li><img src="{% static 'front_assets/img/product-gallery/small/1.jpg' %}" alt=""></li>
-                                            <li><img src="{% static 'front_assets/img/product-gallery/small/2.jpg' %}" alt=""></li>
-                                            <li><img src="{% static 'front_assets/img/product-gallery/small/3.jpg' %}" alt=""></li>
-                                            <li><img src="{% static 'front_assets/img/product-gallery/small/4.jpg' %}" alt=""></li>
-                                            <li><img src="{% static 'front_assets/img/product-gallery/small/5.jpg' %}" alt=""></li>
-                                            <li><img src="{% static 'front_assets/img/product-gallery/small/5.jpg' %}" alt=""></li>
-                                        </ul>
-                                        <!-- End product thumb nav -->
-                                    </div>
-                                    <div class="col-9 col-sm-10">
-                                        <!-- Begin Product Images Slider -->
-                                        <div class="main-img-slider">
-                                            <figure>
-                                                <a href="{% static 'front_assets/img/product-gallery/big/1.jpg' %}" data-size="1400x1400">
-                                                    {% if product.image %} <img src="{{ product.image.url }}"   data-lazy="{{ product.image.url }}" data-zoom-image="{{ product.image.url }}"  alt="" /> {% endif %}
-                                                </a>
-                                            </figure>
-                                            <figure>
-                                                <a href="{% static 'front_assets/img/product-gallery/big/2.jpg' %}" data-size="1400x1400">
-                                                    <img class="" src="{% static 'front_assets/img/product-gallery/big/1.jpg' %}" data-lazy="{% static 'front_assets/img/product-gallery/big/1.jpg' %}" data-zoom-image="assets/img/product-gallery/big/2.jpg"  alt="" />
-                                                </a>
-                                            </figure>
-                                            <figure>
-                                                <a href="{% static 'front_assets/img/product-gallery/big/3.jpg' %}" data-size="1400x1400">
-                                                    <img class="" src="{% static 'front_assets/img/product-gallery/big/3.jpg' %}" data-lazy="" data-zoom-image="assets/img/product-gallery/big/3.jpg"  alt="" />
-                                                </a>
-                                            </figure>
-                                            <figure>
-                                                <a href="{% static 'front_assets/img/product-gallery/big/4.jpg' %}" data-size="1400x1400">
-                                                    <img class="" src="{% static 'front_assets/img/product-gallery/big/4.jpg' %}" data-lazy="assets/img/product-gallery/big/4.jpg" data-zoom-image="assets/img/product-gallery/big/4.jpg"  alt="" />
-                                                </a>
-                                            </figure>
-                                            <figure>
-                                                <a href="assets/img/product-gallery/big/5.jpg" data-size="1400x1400">
-                                                    <img class="" src="{% static 'front_assets/img/product-gallery/big/5.jpg' %}" data-lazy="assets/img/product-gallery/big/5.jpg" data-zoom-image="assets/img/product-gallery/big/5.jpg"  alt="" />
-                                                </a>
-                                            </figure>
-                                            <figure>
-                                                <a href="{% static 'front_assets/img/product-gallery/big/5.jpg' %}" data-size="1400x1400">
-                                                    <img class="" src="{% static 'front_assets/img/product-gallery/big/5.jpg' %}" data-lazy="assets/img/product-gallery/big/5.jpg" data-zoom-image="assets/img/product-gallery/big/5.jpg"  alt="" />
-                                                </a>
-                                            </figure>
-                                        </div>
-                                        <!-- End Product Images Slider -->
-                                        <div class="product-video-btn mx-3 my-3">
-                                            <a class="popup-youtube d-flex align-items-center justify-content-center" href="http://www.youtube.com/watch?v=0O2aH4XLbto">
-                                                <div class="product-video-icon bg-primary text-white d-flex align-items-center justify-content-center rounded-pill mr-2"> <i data-feather="video"></i></div>
-                                                <span class="text-dark font-weight-500">Watch video</span></a>
-                                        </div>
-                                        <!-- /.End of product video button -->
-                                    </div>
-                                </div>
+                <div class="col-lg-9 mainContent category-content"
+                    style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                    <div class="theiaStickySidebar"
+                        style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                        <div class="filter-row d-flex align-items-center justify-content-between">
+                            <div class="filter-title">
+                                <h1 class="fs-21 mb-0 d-inline-block">{{ categoryinfo.cat_name }}</h1>
+                                <span class="text-black-50">- {{ categoryinfo.product_category.count }} items</span>
                             </div>
-                            <!-- End Product Images & Alternates -->
-                            <!-- Begin Product Image Zoom -->
-                            <!-- This should live at bottom of page before closing body tag So that it renders on top of all page elements. -->
-                            <!-- Root element of PhotoSwipe. Must have class pswp. -->
-                            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                                <!-- Background of PhotoSwipe. It's a separate element, as animating opacity is faster than rgba(). -->
-                                <div class="pswp__bg"></div>
-                                <!-- Slides wrapper with overflow:hidden. -->
-                                <div class="pswp__scroll-wrap">
-                                    <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
-                                    <div class="pswp__container">
-                                        <!-- don't modify these 3 pswp__item elements, data is added later on -->
-                                        <div class="pswp__item"></div>
-                                        <div class="pswp__item"></div>
-                                        <div class="pswp__item"></div>
-                                    </div>
-                                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-                                    <div class="pswp__ui pswp__ui--hidden">
-                                        <div class="pswp__top-bar">
-                                            <!--  Controls are self-explanatory. Order can be changed. -->
-                                            <div class="pswp__counter"></div>
-                                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                                            <button class="pswp__button pswp__button--share" title="Share"></button>
-                                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                                            <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
-                                            <!-- element will get class pswp__preloader-active when preloader is running -->
-                                            <div class="pswp__preloader">
-                                                <div class="pswp__preloader__icn">
-                                                    <div class="pswp__preloader__cut">
-                                                        <div class="pswp__preloader__donut"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--  /.pswp__top-bar -->
-                                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                            <div class="pswp__share-tooltip"></div> 
-                                        </div>
-                                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-
-                                        <div class="pswp__caption">
-                                            <div class="pswp__caption__center"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--  End product zoom  -->
-                        </div>
-                        <!-- wrapper -->
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product-summary-content pl-md-4">
-                            <div class="product-price-summary">
-                                <ins class="fs-29 d-inline-block">
-                                    <span class="amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span>{{ product.offer_price }}
-                                    </span>
-                                </ins>
-                                <del class="Price-discount fs-14 text-black-50 font-weight-600 pl-1">
-                                    <span class="amount">
-                                        <span class="currency-symbol">$</span>{{product.sell_price}}
-                                    </span>
-                                </del>
-                                <span class="sale fs-14 font-weight-500 ml-1">(-29%)</span>
-                            </div>
-                            <ul class="summary-header d-flex flex-wrap align-items-center list-unstyled  border-bottom font-weight-600 pb-2">
-                                <li class="position-relative px-2 px-md-3">
-                                    <div class="sold-by-meta">
-                                        <span class="sold-by-label">Sold By: </span>
-                                        <a href="#" class="text-uppercase text-primary">{{ product.supplier }}</a>
-                                    </div>
+                            <!--                        <div>
+                                                            <select class="custom-select custom-select-sm shadow-none rounded-0">
+                                                                <option value="popularity">Popularity</option>
+                                                                <option value="new">new</option>
+                                                                <option value="discount">discount</option>
+                                                                <option value="Price">Price: Low to High</option>
+                                                                <option value="high">Price: High to Low</option>
+                                                            </select>
+                                                        </div>-->
+        
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                    <select class="custom-select custom-select-sm shadow-none">
+                                        <option value="mostRecent" selected="">Sort by</option>
+                                        <option value="newest">Newest first</option>
+                                        <option value="priceHighLow">Price (high - low)</option>
+                                        <option value="priceLowHigh">Price (low - high)</option>
+                                        <option value="topSellers">Top sellers</option>
+                                    </select>
                                 </li>
-                                <li class="position-relative px-2 px-md-3">
-                                    <div class="stock"><label class="text-dark pr-1 font-weight-500 mb-0">Status:</label>5 In stock</div>
+                                <li class="list-inline-item">
+                                    <select class="custom-select custom-select-sm shadow-none">
+                                        <option value="alphabeticalOrderSelect1" selected="">A-to-Z</option>
+                                        <option value="alphabeticalOrderSelect2">Z-to-A</option>
+                                    </select>
+                                </li>
+                                <li class="list-inline-item d-lg-none">
+                                    <a class="btn btn-primary filter-btn btn_filters_mobile d-flex align-items-center justify-content-center p-0 fs-13"
+                                        href="javascript:void(0)">
+                                        <i class="fas fa-filter"></i>
+                                    </a>
                                 </li>
                             </ul>
-                            <div class="short-description">
-                                <ul class="list-checked">
-                                    {% if product.specification %} {{ product.specification|safe }}  {% endif %}
-                                </ul>
-                                <p>{% if product.description %} {{ product.description|safe  }} {% endif %}</p>
-
-                                <div class="product-color mb-3">
-                                    <h5 class="fs-16 font-weight-500 mb-2">Color Picker:</h5>
-                                    <input type="radio" name="color" id="red" value="red">
-                                    <label class="mb-0" for="red"><span class="red"></span></label>
-
-                                    <input type="radio" name="color" id="green">
-                                    <label class="mb-0" for="green"><span class="green"></span></label>
-
-                                    <input type="radio" name="color" id="yellow" checked>
-                                    <label class="mb-0" for="yellow"><span class="yellow"></span></label>
-
-                                    <input type="radio" name="color" id="olive">
-                                    <label class="mb-0" for="olive"><span class="olive"></span></label>
-
-                                    <input type="radio" name="color" id="orange">
-                                    <label class="mb-0" for="orange"><span class="orange"></span></label>
-
-                                    <input type="radio" name="color" id="teal">
-                                    <label class="mb-0" for="teal"><span class="teal"></span></label>
-
-                                    <input type="radio" name="color" id="blue">
-                                    <label class="mb-0" for="blue"><span class="blue"></span></label>
-
-                                    <input type="radio" name="color" id="violet">
-                                    <label class="mb-0" for="violet"><span class="violet"></span></label>
-
-                                    <input type="radio" name="color" id="purple">
-                                    <label class="mb-0" for="purple"><span class="purple"></span></label>
-
-                                    <input type="radio" name="color" id="pink">
-                                    <label class="mb-0" for="pink"><span class="pink"></span></label>
-
-                                    <input type="radio" name="color" id="black">
-                                    <label class="mb-0" for="black"><span class="black"></span></label>
+                        </div>
+                        <div class="">
+                            <div class="filter-summary-filterList mb-4 list-unstyled">
+                                <div
+                                    class="filter-summary-filter d-inline-flex align-items-center position-relative bg-white border fs-13 rounded">
+                                    <span data-colorhex="blue" class="filter-summary-colourBox d-inline-block position-relative"
+                                        style="background-color: rgb(0, 116, 217);"></span>
+                                    <label class="filter-summary-removeFilter mb-0 ml-1">
+                                        <input type="checkbox" value="blue" data-group="Colour"><span
+                                            class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
                                 </div>
-                                <!--  /.End of product color selector -->
-
-                                <div class="product-size mb-3">
-                                    <h5 class="fs-16 font-weight-500 mb-2">Size:</h5>
-                                    <input class="d-none" type="radio" name="size" id="m" value="m">
-                                    <label class="mr-1" for="m"><span class="size d-block bg-transparent border text-uppercase font-weight-500 fs-13 text-muted rounded">M</span></label>
-
-                                    <input class="d-none" type="radio" name="size" id="l" value="l" checked>
-                                    <label class="mr-1" for="l"><span class="size d-block bg-transparent border text-uppercase font-weight-500 fs-13 text-muted rounded">L</span></label>
-
-                                    <input class="d-none" type="radio" name="size" id="xl" value="xl">
-                                    <label class="mr-1" for="xl"><span class="size d-block bg-transparent border text-uppercase font-weight-500 fs-13 text-muted rounded">XL</span></label>
-
-                                    <input class="d-none" type="radio" name="size" id="xxl" value="xxl">
-                                    <label class="mr-1" for="xxl"><span class="size d-block bg-transparent border text-uppercase font-weight-500 fs-13 text-muted rounded">XXL</span></label>
+                                <div
+                                    class="filter-summary-filter d-inline-flex  align-items-center position-relative bg-white border fs-13 rounded">
+                                    Moda Rapido
+                                    <label class="filter-summary-removeFilter mb-0 ml-1">
+                                        <input type="checkbox" value="Moda Rapido" data-group="Brand"><span
+                                            class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
                                 </div>
-                                <!--  /.End of product Size -->
+                                <div
+                                    class="filter-summary-filter d-inline-flex  align-items-center position-relative bg-white border fs-13 rounded">
+                                    <span>60 % and above</span>
+                                    <label class="filter-summary-removeFilter mb-0 ml-1">
+                                        <input type="checkbox" value="60.0" data-group="Discount"><span
+                                            class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
+                                </div>
+                                <div
+                                    class="filter-summary-filter d-inline-flex  align-items-center position-relative bg-white border fs-13 rounded">
+                                    Tk. 239 to Tk. 279
+                                    <label class="filter-summary-removeFilter mb-0 ml-1">
+                                        <input type="checkbox" value="239.0 TO 279.0" data-group="Price"><span
+                                            class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
+                                </div>
+                                <span class="filter-summary-resetAll">clear all</span>
                             </div>
-                            <form class="cart-row d-flex align-items-center">
-                                <div class="num-block skin-2">
-                                    <div class="num-in d-flex bg-white border mr-2">
-                                        <span class="minus position-relative dis"></span>
-                                        <input type="text" class="in-num text-center border-0" value="1" readonly="">
-                                        <span class="plus position-relative"></span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary cart-btn text-uppercase fs-12 font-weight-500 mr-2" type="submit">Add to cart</button>
-                                <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>-->
-                                <a href="#" class="add-wishlist d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Wishlist"><i data-feather="heart"></i></a>
-                                <a href="#" class="add-compare d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Compare"><i data-feather="bar-chart-2"></i></a>
-                            </form>
-                            <div class="product-meta pt-2 border-top mt-2">
-                                <div class="posted-in mb-1">
-                                    <strong class="font-weight-500 mr-1">Categories: </strong>
-                                    <a href="{% url 'categorydetails' product.category.id %}">{{ product.category.cat_name }}</a>
-                                    
-                                </div>
-                                <div class="tag-as">
-                                    <strong class="font-weight-500 mr-1">Tags: </strong>
-                                    <a href="#" class="text-black-50">{{ product.tag }}</a>,
-                                    
+                        </div>
+                        <div class="row">
+        
+                            {% for product in allProducts %}
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3">
+                                <div class="deals-item-inner bg-white overflow-hidden border mb-3">
+                                    <a href="{% url 'productdetails' product.id %}" target="_blank">
+                                        <div class="item-image">
+                                            <img src="{{ product.image.url }}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="item-details position-relative">
+                                            <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's
+                                                {{ product.product_name }}</h3>
+                                            <div class="current-price font-italic font-weight-900 mt-1 fs-16">
+                                                US {{ product.offer_price }}
+                                            </div>
+                                            <div class="original-price font-italic fs-12">
+                                                <del>US {{ product.sell_price }}</del> | <span class="folatR">68% off</span>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="delivery-area mt-3">
-                                <ul class="delivery-list m-0 py-3 px-0 fs-14 list-unstyled bg-gray">
-                                    <li class="delivery">Usually ships within 2 business days<span class="mark ml-1 p-0 text-primary bg-transparent">*</span></li>
-                                    <li class="installation">FREE Shipping</li>
-                                </ul>
-                                <div class="delivery-info mt-2 text-black-50 fs-14">						
-                                    <span class="mark bg-transparent">*</span>Shipping options may vary by region.
+        
+                            {% endfor %}
+        
+        
+        
+        
+        
+                        </div>
+                        <div class="pt-2">
+                            <!-- Pagination-->
+                            <nav class="pagination border-top d-flex align-items-center justify-content-between">
+                                <div class="column">
+                                    <ul class="pages">
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li>...</li>
+                                        <li><a href="#">12</a></li>
+                                    </ul>
+                                </div>
+                                <div class="column text-right hidden-xs-down"><a class="btn btn-primary btn-sm"
+                                        href="#">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
+                            </nav>
+                        </div>
+                        <div class="resize-sensor"
+                            style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div class="resize-sensor-expand"
+                                style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                                <div
+                                    style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 1015px; height: 1532px;">
+                                </div>
+                            </div>
+                            <div class="resize-sensor-shrink"
+                                style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                                <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
                                 </div>
                             </div>
                         </div>
@@ -1144,622 +1147,13 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <ul class="nav nav-tabs justify-content-center mb-4 border-bottom" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reviews</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Specification</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Description</a>
-                </li>
-            </ul>
-            <div class="tab-content border p-4 rounded" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="rating-block-wrapper">
-                        <h3 class="title fs-21 mb-4">Ratings and Reviews</h3>
-                        <div class="row align-items-center">
-                            <div class="col-sm-3">
-                                <div class="rating-block text-center">
-                                    <h4 class="mb-4 fs-21">Average user rating</h4>
-                                    <div class="rating-point position-relative ml-auto mr-auto">
-                                        <!--<i class="fas fa-star"></i>-->
-                                        <i data-feather="star"></i>
-                                        <h3 class="position-absolute mb-0 fs-18 text-primary">4.3</h3>
-                                    </div>
-                                    <div>2,525 Ratings &</div>
-                                    <div>293 Reviews</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="rating-position">
-                                    <h4 class="mb-4 fs-21">Rating breakdown</h4>
-                                    <div class="rating-dimension d-flex mb-2">
-                                        <div class="rating-quantity d-flex align-items-center mr-2">
-                                            5 
-                                            <div class="star-rating ml-1 mb-0">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="rating-percent w-100 mr-2">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="user-rating">1</div>
-                                    </div><!-- /.End of rating dimension -->
-                                    <div class="rating-dimension d-flex mb-2">
-                                        <div class="rating-quantity d-flex align-items-center mr-2">
-                                            4 
-                                            <div class="star-rating ml-1 mb-0">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="rating-percent w-100 mr-2">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="user-rating">1</div>
-                                    </div><!-- /.End of rating dimension -->
-                                    <div class="rating-dimension d-flex mb-2">
-                                        <div class="rating-quantity d-flex align-items-center mr-2">
-                                            3 
-                                            <div class="star-rating ml-1 mb-0">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="rating-percent w-100 mr-2">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="user-rating">0</div>
-                                    </div><!-- /.End of rating dimension -->
-                                    <div class="rating-dimension d-flex mb-2">
-                                        <div class="rating-quantity d-flex align-items-center mr-2">
-                                            2 
-                                            <div class="star-rating ml-1 mb-0">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="rating-percent w-100 mr-2">
-                                            <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="user-rating">0</div>
-                                    </div><!-- /.End of rating dimension -->
-                                    <div class="rating-dimension d-flex">
-                                        <div class="rating-quantity d-flex align-items-center mr-2">
-                                            1 
-                                            <div class="star-rating ml-1 mb-0">
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="rating-percent w-100 mr-2">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-                                                    <span class="sr-only">20% Complete (primary)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="user-rating">0</div>
-                                    </div><!-- /.End of rating dimension -->
-                                </div>
-                            </div>			
-                        </div>	
-                    </div>
-                    <hr class="my-4">
-                    <div class="row">
-                        <div class="col-sm-7 content">
-                            <div class="review-block-wrapper mb-5">
-                                <div class="review-block pb-4 border-bottom">
-                                    <div class="review-block-rate fs-14 mb-3 d-inline-block mr-2">
-                                        <button type="button" class="btn btn-warning d-flex align-items-center py-0 px-2 fs-14">
-                                            5 <i class="fas fa-star fs-12 ml-1"></i>
-                                        </button>
-                                    </div>
-                                    <h5 class="review-block-title fs-17 font-weight-500 d-inline-block">Quisque vel elit eu eros blandit consectetur.</h5>
-                                    <p class="review-block-description">It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                                    </p>
-                                    <div class="review-meta-row d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="review-block-name font-weight-500 mr-2 text-dark">Tania Dasgupta</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            <span class="review-block-date text-black-50 fs-12 ml-2">January 29, 2016 1 day ago</span>
-                                        </div>
-                                        <div class="like-dislike d-flex">
-                                            <button type="button" class="btn p-0 likes text-success mr-2"><i class="far fa-thumbs-up"></i> 68</button>
-                                            <button type="button" class="btn p-0 dislikes text-primary"><i class="far fa-thumbs-down"></i> 20</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-block py-4 border-bottom">
-                                    <div class="review-block-rate fs-14 mb-3 d-inline-block mr-2">
-                                        <button type="button" class="btn btn-primary d-flex align-items-center py-0 px-2 fs-14">
-                                            4 <i class="fas fa-star fs-12 ml-1"></i>
-                                        </button>
-                                    </div>
-                                    <h5 class="review-block-title fs-17 font-weight-500 d-inline-block">Quisque vel elit eu eros blandit consectetur.</h5>
-                                    <p class="review-block-description">It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                                    </p>
-                                    <div class="review-meta-row d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="review-block-name font-weight-500 mr-2 text-dark">Tania Dasgupta</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            <span class="review-block-date text-black-50 fs-12 ml-2">January 29, 2016 1 day ago</span>
-                                        </div>
-                                        <div class="like-dislike d-flex">
-                                            <button type="button" class="btn p-0 likes text-success mr-2"><i class="far fa-thumbs-up"></i> 68</button>
-                                            <button type="button" class="btn p-0 dislikes text-primary"><i class="far fa-thumbs-down"></i> 20</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-block py-4 border-bottom">
-                                    <div class="review-block-rate fs-14 mb-3 d-inline-block mr-2">
-                                        <button type="button" class="btn btn-info d-flex align-items-center py-0 px-2 fs-14">
-                                            4 <i class="fas fa-star fs-12 ml-1"></i>
-                                        </button>
-                                    </div>
-                                    <h5 class="review-block-title fs-17 font-weight-500 d-inline-block">Quisque vel elit eu eros blandit consectetur.</h5>
-                                    <p class="review-block-description">It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                                    </p>
-                                    <div class="review-meta-row d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="review-block-name font-weight-500 mr-2 text-dark">Tania Dasgupta</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            <span class="review-block-date text-black-50 fs-12 ml-2">January 29, 2016 1 day ago</span>
-                                        </div>
-                                        <div class="like-dislike d-flex">
-                                            <button type="button" class="btn p-0 likes text-success mr-2"><i class="far fa-thumbs-up"></i> 68</button>
-                                            <button type="button" class="btn p-0 dislikes text-primary"><i class="far fa-thumbs-down"></i> 20</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-block py-4 border-bottom">
-                                    <div class="review-block-rate fs-14 mb-3 d-inline-block mr-2">
-                                        <button type="button" class="btn btn-warning d-flex align-items-center py-0 px-2 fs-14">
-                                            4 <i class="fas fa-star fs-12 ml-1"></i>
-                                        </button>
-                                    </div>
-                                    <h5 class="review-block-title fs-17 font-weight-500 d-inline-block">Quisque vel elit eu eros blandit consectetur.</h5>
-                                    <p class="review-block-description">It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                                    </p>
-                                    <div class="review-meta-row d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="review-block-name font-weight-500 mr-2 text-dark">Tania Dasgupta</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            <span class="review-block-date text-black-50 fs-12 ml-2">January 29, 2016 1 day ago</span>
-                                        </div>
-                                        <div class="like-dislike d-flex">
-                                            <button type="button" class="btn p-0 likes text-success mr-2"><i class="far fa-thumbs-up"></i> 68</button>
-                                            <button type="button" class="btn p-0 dislikes text-primary"><i class="far fa-thumbs-down"></i> 20</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-block py-4 border-bottom">
-                                    <div class="review-block-rate fs-14 mb-3 d-inline-block mr-2">
-                                        <button type="button" class="btn btn-primary d-flex align-items-center py-0 px-2 fs-14">
-                                            4 <i class="fas fa-star fs-12 ml-1"></i>
-                                        </button>
-                                    </div>
-                                    <h5 class="review-block-title fs-17 font-weight-500 d-inline-block">Quisque vel elit eu eros blandit consectetur.</h5>
-                                    <p class="review-block-description">It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                                    </p>
-                                    <div class="review-meta-row d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <span class="review-block-name font-weight-500 mr-2 text-dark">Tania Dasgupta</span>
-                                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            <span class="review-block-date text-black-50 fs-12 ml-2">January 29, 2016 1 day ago</span>
-                                        </div>
-                                        <div class="like-dislike d-flex">
-                                            <button type="button" class="btn p-0 likes text-success mr-2"><i class="far fa-thumbs-up"></i> 68</button>
-                                            <button type="button" class="btn p-0 dislikes text-primary"><i class="far fa-thumbs-down"></i> 20</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-footer">
-                                    <a href="#" class="view-all-review text-primary font-weight-500 d-block mt-3">View all 293 reviews <i class="ti-angle-right ml-1 fs-14"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 pl-lg-5 rightSidebar">
-                            <div class="review-content mb-5">                                     
-                                <div class="review-product-info">
-                                    <h4 class="review-product-name">Herschel Leather Duffle Bag In Brown Color</h4>
-                                    <div class="review-product-brand text-primary">Symphony</div>
-                                </div>
-                                <div class="rating-content d-flex align-items-center">
-                                    <label for="score" class="control-label mb-0 font-weight-500">Rate it: *</label>
-                                    <div id="rating" class="ml-2"></div>
-                                </div>
-                                <form class="review-form">
-                                    <div class="form-group">
-                                        <label class="font-weight-500">Title *</label>
-                                        <input type="text" class="form-control" id="title" placeholder="Title">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="font-weight-500">Review *</label>
-                                        <textarea class="form-control" placeholder="Review" rows="5"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="font-weight-500">Publish as *</label>
-                                        <input type="text" class="form-control" id="publish" placeholder="Publish as ">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Send Your Review</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <div class="specs-details">
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Dimension Image</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <img src="https://assorted.downloads.oppo.com/static/archives/images/dd/Smartphones/F15/F15-dimension.png" alt="F15 Dimension Image ">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Exterior</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <img src="https://assorted.downloads.oppo.com/static/archives/images/dd/Smartphones/F15/Exterior-F15.png" alt="F15 Exterior ">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Dimensions/Weight</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <span>Height:  160.2mm</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Width:  73.3mm</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Thickness:  7.9mm</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Weight:  Approx. 172g</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Basic Parameters</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <span>Color:  Lightening Black, Unicorn White</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Operating System:  ColorOS 6.1.2, based on Android 9</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>CPU:  MTK MT6771V</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>GPU:  ARM Mali G72 MP3 900MHz</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Battery:  4025mAh </span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>RAM:  8GB</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>RAM Description:  LPDDR 4x</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Storage:  128GB</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>VOOC Flash Charge:   VOOC 3.0</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Display</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <span>Size:  16.2cm(6.4'')</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Touchscreen:  Multi-touch, Capacitive Screen</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Resolution:  2400 by 1080 pixels at 408 ppi</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Colors:  16 million colors</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Screen Ratio:  90.7%</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Contrast:  1000000:1</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Type:  AMOLED</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Brightness:  Typical Value 430nit</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Camera</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <span>Rear Sensor:  48MP &amp; 8MP &amp; 2MP &amp; 2MP</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Front Sensor:  16-megapixel</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Aperture:  Front F2.0 Rear: Main f/1.79; Wide Angle f/2.25; Portrait &amp; Mono f/2.4</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Sensor Size:  <br>Front: 1/3.1', 1.0um <br>Rear: Main 1/2.25', 0.8um Secondary Wide Angle 1/4', 1.12um  2M  1/5', 1.75um</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Camera Mode:  Photo, video, professional mode, panorama, portrait, night scene, time-lapse photography, slow motion, etc.</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Video:  <br>Front Camera: 1080P/720P@30fps<br>Rear Camera: 1080P @30fps, 720P@30fps</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4"></h2>
-                            <div class="specs-group-cont col-sm-8">
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Connectivity</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <span>Frequencies:  GSM: 850/900/1800/1900MHz
-                                        WCDMA: Bands 1/5/8
-                                        FDD-LTE: Bands 1/3/5/8
-                                        TD-LTE: Bands 38/40/41
 
-                                    </span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>SIM Card Type:  Nano-SIM / Nano-USIM</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>GPS:  Built-in GPS; supports A-GPS, Beidou, Glonass</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>Bluetooth:  4.2</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>OTG:  Supported</span>
-                                </div>
-                                <div class="specs-group-item">
-                                    <span>NFC:  No</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">SAR</h2>
-                            <div class="specs-group-cont col-sm-8">
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Sensors</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <p>Magnetic Induction Sensor</p><p>Light Sensor</p><p>Proximity Sensor</p><p>G-Sensor/Acceleration Sensor</p><p>Gyroscope</p><p>Pedometer&nbsp;</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">In the Box</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <p>OPPO F15*1</p><p>Adapter*1</p><p>Headset*1 &nbsp; &nbsp;</p><p>Micro USB Cable*1 &nbsp; &nbsp;</p><p>Important Info. Booklet with Warranty Card*1</p><p>SIM Card Pin*1 &nbsp; &nbsp;</p><p>Protective Film, pre-applied*1&nbsp; &nbsp;</p><p>Quick Start Guide*1</p><p>Case*1</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Product ID</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <span>Product ID:  CPH2001</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="specs-group row">
-                            <h2 class="specs-group-title col-sm-4">Additional Remarks</h2>
-                            <div class="specs-group-cont col-sm-8">
-                                <div class="specs-group-item">
-                                    <p>1. A special technology is applied to conceal the proximity sensor on the upper front of OPPO's smartphone for the whole look of simplicity. It may cause abnormality of proximity function if the film or protector covers the proximity sensor area. Refer to OPPO's official layout of protector and film for details.</p><p><a href="#" target="_blank"><span>Download&nbsp;Layout</span></a></p><p><br></p><p>2. Learn about REACH Statement</p><p><a href="#" target="_blank"><span>Download&nbsp;REACH Statement</span></a></p><p><br></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-            </div>
+
         </div>
-        <!--Related product-->
-        <div class="container py-5">
-            <h3 class="mb-4 fs-21">Related Product</h3>
-            <div class="row">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
-                        <a href="details.html" target="_blank">
-                            <div class="item-image">
-                                <img src="{% static 'front_assets/img/product/13.jpg' %}" class="img-fluid" alt="">
-                            </div>
-                            <div class="item-details position-relative">
-                                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's Casual Shoes Simple Suede Lightweight Breathable 2019 Fashion Anti-collision Cushioning Wear-resistant Non-slip Shoes Men</h3>
-                                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
-                                    US $11.63
-                                </div>
-                                <div class="original-price font-italic fs-12">
-                                    <del>US $36.33</del> | <span class="folatR">68% off</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
-                        <a href="details.html" target="_blank">
-                            <div class="item-image">
-                                <img src="{% static 'front_assets/img/product/14.jpg' %}" class="img-fluid" alt="">
-                            </div>
-                            <div class="item-details position-relative">
-                                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's Casual Shoes Simple Suede Lightweight Breathable 2019 Fashion Anti-collision Cushioning Wear-resistant Non-slip Shoes Men</h3>
-                                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
-                                    US $11.63
-                                </div>
-                                <div class="original-price font-italic fs-12">
-                                    <del>US $36.33</del> | <span class="folatR">68% off</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
-                        <a href="details.html" target="_blank">
-                            <div class="item-image">
-                                <img src="{% static 'front_assets/img/product/15.jpg' %}" class="img-fluid" alt="">
-                            </div>
-                            <div class="item-details position-relative">
-                                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's Casual Shoes Simple Suede Lightweight Breathable 2019 Fashion Anti-collision Cushioning Wear-resistant Non-slip Shoes Men</h3>
-                                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
-                                    US $11.63
-                                </div>
-                                <div class="original-price font-italic fs-12">
-                                    <del>US $36.33</del> | <span class="folatR">68% off</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
-                        <a href="details.html" target="_blank">
-                            <div class="item-image">
-                                <img src="{% static 'front_assets/img/product/16.jpg' %}" class="img-fluid" alt="">
-                            </div>
-                            <div class="item-details position-relative">
-                                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's Casual Shoes Simple Suede Lightweight Breathable 2019 Fashion Anti-collision Cushioning Wear-resistant Non-slip Shoes Men</h3>
-                                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
-                                    US $11.63
-                                </div>
-                                <div class="original-price font-italic fs-12">
-                                    <del>US $36.33</del> | <span class="folatR">68% off</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
-                        <a href="details.html" target="_blank">
-                            <div class="item-image">
-                                <img src="{% static 'front_assets/img/product/17.jpg' %}" class="img-fluid" alt="">
-                            </div>
-                            <div class="item-details position-relative">
-                                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's Casual Shoes Simple Suede Lightweight Breathable 2019 Fashion Anti-collision Cushioning Wear-resistant Non-slip Shoes Men</h3>
-                                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
-                                    US $11.63
-                                </div>
-                                <div class="original-price font-italic fs-12">
-                                    <del>US $36.33</del> | <span class="folatR">68% off</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
-                        <a href="details.html" target="_blank">
-                            <div class="item-image">
-                                <img src="{% static 'front_assets/img/product/18.jpg' %}" class="img-fluid" alt="">
-                            </div>
-                            <div class="item-details position-relative">
-                                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's Casual Shoes Simple Suede Lightweight Breathable 2019 Fashion Anti-collision Cushioning Wear-resistant Non-slip Shoes Men</h3>
-                                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
-                                    US $11.63
-                                </div>
-                                <div class="original-price font-italic fs-12">
-                                    <del>US $36.33</del> | <span class="folatR">68% off</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Newsletter-->
-        <div class="newsletter bg-gray border-top py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-sm-auto mb-4 mb-lg-0">
-                                <h5 class="newsletter-title fs-21 mb-0"><i data-feather="send" class="mr-2"></i>Sign up to Newsletter</h5>
-                            </div>
-                            <div class="col mb-4 mb-lg-0">
-                                <span class="newsletter-marketing-text">...and receive <strong>$20 coupon for first shopping</strong></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Example@your_email.com">
-                                <div class="input-group-append ml-2">
-                                    <button class="btn btn-secondary fs-14 text-capitalize" type="button">Sign up</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
+
         <!--Footer-->
         <footer class="main-footer footer-dark">
             <div class="container">
@@ -1858,5 +1252,8 @@
         <script src="{% static 'front_assets/plugins/ion.rangeSlider/js/ion.rangeSlider.min.js' %}"></script>
         <script src="{% static 'front_assets/plugins/jquery.countdown/jquery.countdown.min.js' %}"></script>
         <script src="{% static 'front_assets/dist/js/custom.js' %}"></script>
+        <script src="{% static 'front_assets/dist/js/category.js' %}"></script>
+
+                
     </body>
 </html>

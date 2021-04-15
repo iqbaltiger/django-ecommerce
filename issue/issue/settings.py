@@ -136,5 +136,5 @@ print(MEDIA_ROOT)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root', 'static')
 
-
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 

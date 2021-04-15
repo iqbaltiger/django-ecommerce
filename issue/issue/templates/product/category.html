@@ -1,1 +1,280 @@
-<h2>Catregory Page: {{ categoryinfo.cat_name }}</h2>
+{% extends 'product/main.html' %}
+{% load static %}
+{% block layout_title %} Category {% endblock layout_title %}
+{% block common_layout %}
+
+<div class="container" style="transform: none;">
+    <div class="row" style="transform: none;">
+        <div class="col-md-3 d-none d-lg-block leftSidebar mb-3 pr-xl-4"
+            style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1505.5px;">
+
+
+
+            <div class="theiaStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: absolute; transform: translateY(657.5px); top: 0px; width: 296px;">
+                <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h2 class="mb-0 fs-17">Accessories</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-sliders card-header_icon">
+                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                            <line x1="1" y1="14" x2="7" y2="14"></line>
+                            <line x1="9" y1="8" x2="15" y2="8"></line>
+                            <line x1="17" y1="16" x2="23" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <ul class="subcategories list-unstyled">
+
+                            {% for category in categories %}
+                            <li>
+                                <a href="{% url 'categorydetails' category.id %}" class="d-flex align-items-center mb-2 text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right mr-1">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                    <span class="name">{{ category.cat_name }}</span>
+                                    <span class="total fs-12 text-black-50 ml-2">{{ category.product_category.count  }}</span>
+                                </a>
+                            </li>
+                            {%  endfor  %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h2 class="mb-0 fs-17">Price</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-sliders card-header_icon">
+                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                            <line x1="1" y1="14" x2="7" y2="14"></line>
+                            <line x1="9" y1="8" x2="15" y2="8"></line>
+                            <line x1="17" y1="16" x2="23" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <span class="irs irs--round js-irs-0"><span class="irs"><span class="irs-line"
+                                    tabindex="0"></span><span class="irs-min"
+                                    style="visibility: visible;">$0</span><span class="irs-max"
+                                    style="visibility: hidden;">$1 000</span><span class="irs-from"
+                                    style="visibility: visible; left: 15.6102%;">$200</span><span class="irs-to"
+                                    style="visibility: visible; left: 69.9409%;">$800</span><span class="irs-single"
+                                    style="visibility: hidden; left: 33.846%;">$200 — $800</span></span><span
+                                class="irs-grid"></span><span class="irs-bar"
+                                style="left: 22.8346%; width: 54.3307%;"></span><span class="irs-shadow shadow-from"
+                                style="display: none;"></span><span class="irs-shadow shadow-to"
+                                style="display: none;"></span><span class="irs-handle from"
+                                style="left: 18.1102%;"><i></i><i></i><i></i></span><span
+                                class="irs-handle to type_last"
+                                style="left: 72.4409%;"><i></i><i></i><i></i></span></span>
+                        <div class="js-range-slider irs-hidden-input" tabindex="-1"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h2 class="mb-0 fs-17">Preferred Brand</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-sliders card-header_icon">
+                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                            <line x1="1" y1="14" x2="7" y2="14"></line>
+                            <line x1="9" y1="8" x2="15" y2="8"></line>
+                            <line x1="17" y1="16" x2="23" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+
+                        {% for brand in brandlist %}
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input type="checkbox" class="custom-control-input" id="brand1">
+                            <label class="custom-control-label" for="brand1">
+                                {{ brand.brand_name }}<span class="count text-muted fs-12 ml-1">({{ brand.product_brand.count }})</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="resize-sensor"
+                    style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                    <div class="resize-sensor-expand"
+                        style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                        <div
+                            style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 306px; height: 858px;">
+                        </div>
+                    </div>
+                    <div class="resize-sensor-shrink"
+                        style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                        <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 mainContent category-content"
+            style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+            <div class="theiaStickySidebar"
+                style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                <div class="filter-row d-flex align-items-center justify-content-between">
+                    <div class="filter-title">
+                        <h1 class="fs-21 mb-0 d-inline-block">{{ categoryinfo.cat_name }}</h1>
+                        <span class="text-black-50">- {{ categoryinfo.product_category.count }} items</span>
+                    </div>
+                    <!--                        <div>
+                                                    <select class="custom-select custom-select-sm shadow-none rounded-0">
+                                                        <option value="popularity">Popularity</option>
+                                                        <option value="new">new</option>
+                                                        <option value="discount">discount</option>
+                                                        <option value="Price">Price: Low to High</option>
+                                                        <option value="high">Price: High to Low</option>
+                                                    </select>
+                                                </div>-->
+
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <select class="custom-select custom-select-sm shadow-none">
+                                <option value="mostRecent" selected="">Sort by</option>
+                                <option value="newest">Newest first</option>
+                                <option value="priceHighLow">Price (high - low)</option>
+                                <option value="priceLowHigh">Price (low - high)</option>
+                                <option value="topSellers">Top sellers</option>
+                            </select>
+                        </li>
+                        <li class="list-inline-item">
+                            <select class="custom-select custom-select-sm shadow-none">
+                                <option value="alphabeticalOrderSelect1" selected="">A-to-Z</option>
+                                <option value="alphabeticalOrderSelect2">Z-to-A</option>
+                            </select>
+                        </li>
+                        <li class="list-inline-item d-lg-none">
+                            <a class="btn btn-primary filter-btn btn_filters_mobile d-flex align-items-center justify-content-center p-0 fs-13"
+                                href="javascript:void(0)">
+                                <i class="fas fa-filter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="">
+                    <div class="filter-summary-filterList mb-4 list-unstyled">
+                        <div
+                            class="filter-summary-filter d-inline-flex align-items-center position-relative bg-white border fs-13 rounded">
+                            <span data-colorhex="blue" class="filter-summary-colourBox d-inline-block position-relative"
+                                style="background-color: rgb(0, 116, 217);"></span>
+                            <label class="filter-summary-removeFilter mb-0 ml-1">
+                                <input type="checkbox" value="blue" data-group="Colour"><span
+                                    class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
+                        </div>
+                        <div
+                            class="filter-summary-filter d-inline-flex  align-items-center position-relative bg-white border fs-13 rounded">
+                            Moda Rapido
+                            <label class="filter-summary-removeFilter mb-0 ml-1">
+                                <input type="checkbox" value="Moda Rapido" data-group="Brand"><span
+                                    class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
+                        </div>
+                        <div
+                            class="filter-summary-filter d-inline-flex  align-items-center position-relative bg-white border fs-13 rounded">
+                            <span>60 % and above</span>
+                            <label class="filter-summary-removeFilter mb-0 ml-1">
+                                <input type="checkbox" value="60.0" data-group="Discount"><span
+                                    class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
+                        </div>
+                        <div
+                            class="filter-summary-filter d-inline-flex  align-items-center position-relative bg-white border fs-13 rounded">
+                            Tk. 239 to Tk. 279
+                            <label class="filter-summary-removeFilter mb-0 ml-1">
+                                <input type="checkbox" value="239.0 TO 279.0" data-group="Price"><span
+                                    class="myntraweb-sprite filter-summary-removeIcon sprites-remove"></span></label>
+                        </div>
+                        <span class="filter-summary-resetAll">clear all</span>
+                    </div>
+                </div>
+                <div class="row">
+
+                    {% for product in allProducts %}
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3">
+                        <div class="deals-item-inner bg-white overflow-hidden border mb-3">
+                            <a href="details.html" target="_blank">
+                                <div class="item-image">
+                                    <img src="{{ product.image.url }}" class="img-fluid" alt="">
+                                </div>
+                                <div class="item-details position-relative">
+                                    <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's
+                                        {{ product.product_name }}</h3>
+                                    <div class="current-price font-italic font-weight-900 mt-1 fs-16">
+                                        US {{ product.offer_price }}
+                                    </div>
+                                    <div class="original-price font-italic fs-12">
+                                        <del>US {{ product.sell_price }}</del> | <span class="folatR">68% off</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <div class="pt-2">
+                    <!-- Pagination-->
+                    <nav class="pagination border-top d-flex align-items-center justify-content-between">
+                        <div class="column">
+                            <ul class="pages">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li>...</li>
+                                <li><a href="#">12</a></li>
+                            </ul>
+                        </div>
+                        <div class="column text-right hidden-xs-down"><a class="btn btn-primary btn-sm"
+                                href="#">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
+                    </nav>
+                </div>
+                <div class="resize-sensor"
+                    style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                    <div class="resize-sensor-expand"
+                        style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                        <div
+                            style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 1015px; height: 1532px;">
+                        </div>
+                    </div>
+                    <div class="resize-sensor-shrink"
+                        style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                        <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+
+.custom-control-label{width:100%;}
+
+
+</style>
+{% endblock common_layout %}
