@@ -298,11 +298,14 @@ class CategoryDetails(SuccessMessageMixin,ListView):
 
 
 def load_category_based_product(request):
-    brandId = request.GET.get('brand', None)
-    print("brandId:",brandId)
-    brand = get_object_or_404(Brand, pk=brandId)
+    brands = request.GET.getlist('brand[]')
+    categoryId = request.GET.get('catId', None)
+    # print("brandId:",brandId)
+    # brand = get_object_or_404(Brand, pk=brandId)
+    category = get_object_or_404(Category, pk=categoryId)
     print("############Issue Here##############")
-    allbrand_based_product = Product.objects.filter(brand=brand)
+    allbrand_based_product = Product.objects.filter(
+        brand__id__in=brands).filter(category=category).distinct()
     
     # model_to_dict(brand)
     t = render_to_string('product/ajax/product-list.html',
