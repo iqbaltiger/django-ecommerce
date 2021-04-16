@@ -11,6 +11,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
+from django.core import serializers
+from django.template.loader import render_to_string
 
 
 
@@ -299,12 +301,14 @@ def load_category_based_product(request):
     brandId = request.GET.get('brand', None)
     print("brandId:",brandId)
     brand = get_object_or_404(Brand, pk=brandId)
+    print("############Issue Here##############")
+    allbrand_based_product = Product.objects.filter(brand=brand)
     
+    # model_to_dict(brand)
+    t = render_to_string('product/ajax/product-list.html',
+                         {'data': allbrand_based_product})
+
+
+    return JsonResponse({'data': t})
     
-    # data = {
-
-    #     "backdata": brandId
-    # }  
-    return JsonResponse(model_to_dict(brand))
-
 

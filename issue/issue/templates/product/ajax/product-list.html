@@ -1,0 +1,22 @@
+{% for product in data %}
+<div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3">
+    <div class="deals-item-inner bg-white overflow-hidden border mb-3">
+        <a href="{% url 'productdetails' product.id %}" target="_blank">
+            <div class="item-image">
+                <img src="{{ product.image.url }}" class="img-fluid" alt="">
+            </div>
+            <div class="item-details position-relative">
+                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's
+                    {{ product.product_name }}</h3>
+                <div class="current-price font-italic font-weight-900 mt-1 fs-16">
+                    US {{ product.offer_price }}
+                </div>
+                <div class="original-price font-italic fs-12">
+                    <del>US {{ product.sell_price }}</del> | <span class="folatR">68% off</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endfor %}
