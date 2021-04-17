@@ -10,9 +10,9 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from django.forms.models import model_to_dict
-from django.core import serializers
+from django.core.paginator import Paginator
 from django.template.loader import render_to_string
+
 
 
 
@@ -279,6 +279,7 @@ class ProductDetails(SuccessMessageMixin,DetailView):
     
 class CategoryDetails(SuccessMessageMixin,ListView):
     model = Product
+    paginate_by = 3
     template_name = 'product/temp_category.html'
 
     def get_context_data(self,**kwargs):
@@ -304,8 +305,12 @@ def load_category_based_product(request):
     # brand = get_object_or_404(Brand, pk=brandId)
     category = get_object_or_404(Category, pk=categoryId)
     print("############Issue Here##############")
-    allbrand_based_product = Product.objects.filter(
-        brand__id__in=brands).filter(category=category).distinct()
+    if brands:
+
+       allbrand_based_product = Product.objects.filter(
+       brand__id__in=brands).filter(category=category).distinct()
+    else:
+       allbrand_based_product = Product.objects.filter(category=category).distinct()
     
     # model_to_dict(brand)
     t = render_to_string('product/ajax/product-list.html',
@@ -313,5 +318,44 @@ def load_category_based_product(request):
 
 
     return JsonResponse({'data': t})
+
+    
+    
+    #Sorting based product
+
+def load_sorting_based_product(request):
+        
+    sort_value = request.GET.get('sort_order_value', None)
+    categoryId = request.GET.get('catId', None)
+    print("Sort Value:", sort_value)
+    # brand = get_object_or_404(Brand, pk=brandId)
+    category = get_object_or_404(Category, pk=categoryId)
+    print("############Sort Here##############")
+    if sort_value == 'newest':
+
+        allbrand_based_product = Product.objects.filter(
+            category=category).order_by('-id').distinct()
+    elif sort_value == 'priceHighLow':
+       allbrand_based_product = Product.objects.filter(
+            category=category).order_by('-offer_price').distinct()   
+
+    elif sort_value == 'priceLowHigh':
+       allbrand_based_product = Product.objects.filter(
+           category=category).order_by('offer_price').distinct()
+    else:
+        allbrand_based_product = Product.objects.filter(
+            category=category).distinct()
+
+    
+    
+    # allbrand_based_product = Product.objects.filter(
+    #     category=category).order_by('-offer_price').distinct()
+
+    # model_to_dict(brand)
+    t = render_to_string('product/ajax/product-list.html',
+                        {'data': allbrand_based_product})
+
+    return JsonResponse({'data': t})
+
     
 

@@ -117,6 +117,8 @@ class Product(models.Model):
     supplier = models.ForeignKey(Supplier,on_delete=models.PROTECT,null=True,related_name="supplier_info")
     variant = models.ForeignKey(Variant,on_delete=models.PROTECT,related_name='product_variant',blank=True,null=True)
     video_link  = models.CharField(max_length=30,blank=True,null=True) 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.product_name

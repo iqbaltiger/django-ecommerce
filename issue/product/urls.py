@@ -64,6 +64,9 @@ urlpatterns = [
     path('productdetails/<int:pk>',ProductDetails.as_view(),name="productdetails"),
     path('categorydetails/<int:pk>',CategoryDetails.as_view(),name="categorydetails"),
     path('brandbasedproduct/', views.load_category_based_product,name="brandbasedproduct"),
+    path('sortingproduct/', views.load_sorting_based_product,
+         name="sortingproduct"),
+    
     
          
 ]
