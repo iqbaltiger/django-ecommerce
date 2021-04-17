@@ -276,11 +276,16 @@ class ProductDetails(SuccessMessageMixin,DetailView):
     template_name = 'product/product_front_store.html'    
 
 
-    
 class CategoryDetails(SuccessMessageMixin,ListView):
     model = Product
-    paginate_by = 3
+    paginate_by = 2
     template_name = 'product/temp_category.html'
+    #context_object_name = 'allProducts'
+    
+    # def get_queryset(self):
+    #     #category = get_object_or_404(Category, pk=self)
+    #     queryresult = Product.objects.filter(category=self)
+    #     return queryresult
 
     def get_context_data(self,**kwargs):
 
@@ -290,10 +295,17 @@ class CategoryDetails(SuccessMessageMixin,ListView):
         category = get_object_or_404(Category,pk=id)
         context['categoryinfo'] = get_object_or_404(Category,pk=id)
         # context['product_list'] = Product.objects.filter(category__id=id).all()
-        context['brandlist'] = Brand.objects.all()
+        all_Product = Product.objects.filter(category=category).all()
+
+        brand_dict = {}
+
+        for i in all_Product:
+            brand_dict[i.brand.id] = i.brand.brand_name
+
+        context['brandlist'] = brand_dict
         context['categories'] = Category.objects.all()
         context['allProducts'] = category.product_category.all()
-        print(context['allProducts'])
+        #print(context['allProducts'])
 
         return context    
 
@@ -342,6 +354,14 @@ def load_sorting_based_product(request):
     elif sort_value == 'priceLowHigh':
        allbrand_based_product = Product.objects.filter(
            category=category).order_by('offer_price').distinct()
+
+    elif sort_value == 'a_to_z':
+       allbrand_based_product = Product.objects.filter(
+           category=category).order_by('product_name').distinct()
+
+    elif sort_value == 'z_to_a':
+       allbrand_based_product = Product.objects.filter(
+           category=category).order_by('-product_name').distinct()
     else:
         allbrand_based_product = Product.objects.filter(
             category=category).distinct()

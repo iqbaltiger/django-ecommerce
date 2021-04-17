@@ -36,6 +36,13 @@ class Brand(models.Model):
     def __str__(self):
         return self.brand_name
 
+    def save(self, *args, **kwargs):
+        if self.brand_name:
+           self.brand_name = self.brand_name.lower()
+
+        return super(Brand, self).save(*args, **kwargs)
+    
+
 #Product Variant
     
 class Variant(models.Model):
@@ -122,4 +129,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
-     
+
+    def save(self, *args, **kwargs):
+        if self.product_name:
+           self.product_name = self.product_name.lower()
+   
+        return super(Product, self).save(*args, **kwargs)

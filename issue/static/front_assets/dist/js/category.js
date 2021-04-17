@@ -46,14 +46,9 @@ $(document).ready(function(){
     
     //Sorting Order
     $('#sorting_order').on('change', function() {
-       
-        // var sorting_action = {};
-        // sorting_action.sort_value = this.value
-        var url = window.location.pathname;
+       var url = window.location.pathname;
        var _catId = url.substring(url.lastIndexOf('/') + 1);
-        // sorting_action.catId=_catId;
-       alert(this.value) 
-
+       
         $.ajax({
 			url: '/product/sortingproduct/',
 			data:{
@@ -72,10 +67,36 @@ $(document).ready(function(){
 			}
 		});
 
-     
-
     });
     //End Sorting Order
+
+    //Alphabetical Order
+
+    $('#alphabetical_order').on('change',function(){
+
+       var url = window.location.pathname;
+       var _catId = url.substring(url.lastIndexOf('/') + 1);
+       //alert(this.value)
+       
+        $.ajax({
+			url: '/product/sortingproduct/',
+			data:{
+
+                'sort_order_value':this.value,
+                'catId':_catId
+            },
+			dataType:'json',
+			// beforeSend:function(){
+			// 	$(".ajaxLoader").show();
+			// },
+			success:function(res){
+				console.log(res);
+				$("#filteredProducts").html(res.data);
+				//$(".ajaxLoader").hide();
+			}
+		});
+
+    });
 
         
     });
