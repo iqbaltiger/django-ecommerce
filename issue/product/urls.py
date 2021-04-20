@@ -67,7 +67,13 @@ urlpatterns = [
     path('sortingproduct/', views.load_sorting_based_product,
          name="sortingproduct"),
     
-    
+    #Cart
+
+    path('cartdetails/<int:pk>',
+         CartDetails.as_view(), name="cartdetails"),
+
+    path('addToCart/', views.addToCart, name="addToCart"),
+    path('cart/',CartList.as_view(),name="cartlist")
          
 ]
 

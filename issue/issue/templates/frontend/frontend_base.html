@@ -1,0 +1,24 @@
+{% load static %}
+{% include 'frontend/header.html' %}
+
+<body>
+    <!--Register modal-->
+    {% include 'frontend/registration_login_modal.html' %}
+    <!--Topbar-->
+    {% include 'frontend/top_bar.html' %}
+    <!--Navbar-->
+
+    {% include 'frontend/menu_bar.html' %}
+
+    {% block content %} {% endblock content %}
+
+    <!--Newsletter-->
+    {% include 'frontend/newsletter_subscribe.html' %}
+    <!--Footer-->
+    {% include 'frontend/footer.html' %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {% include 'frontend/all_script.html' %}
+    </body>
+    
+    </html>

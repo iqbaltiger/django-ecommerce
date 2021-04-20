@@ -972,19 +972,22 @@
                               
                             </div> -->
 
-                            <div class="card-body">
+                            <div class="card-body" id="filter_brand">
                                 <!-- {% for brand in brandlist %}
                                 <div class="mb-2">
-                                    <input type="checkbox" class="checkbox_check" id="brand{{brand.id}}">
+                                    <input type="checkbox" class="checkbox_check" id="{{brand.id}}">
                                     <span class="custom-control-label" for="brand1">
                                         {{ brand.brand_name }}<span class="count text-muted fs-12 ml-1">({{ brand.product_brand.count }})</span>
                                     </span>
                                 </div>
                                 {% endfor %} -->
-
-                                {% for brand in brandlist %}
-                                   <input type="checkbox" class="checkbox_check" id="{{brand.id}}">
-
+                                
+                                {% for key, value in brandlist.items %}
+                                
+                                <div class="mb-2">
+                                <input class="filter-checkbox" data-filter="brand" value="{{key}}" type="checkbox" />
+                                <span>{{ value }}</span>
+                                </div>
                                 {% endfor %}
                             </div>    
 
@@ -1026,7 +1029,7 @@
         
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item">
-                                    <select class="custom-select custom-select-sm shadow-none">
+                                    <select class="custom-select custom-select-sm shadow-none" id="sorting_order">
                                         <option value="mostRecent" selected="">Sort by</option>
                                         <option value="newest">Newest first</option>
                                         <option value="priceHighLow">Price (high - low)</option>
@@ -1035,9 +1038,13 @@
                                     </select>
                                 </li>
                                 <li class="list-inline-item">
-                                    <select class="custom-select custom-select-sm shadow-none">
-                                        <option value="alphabeticalOrderSelect1" selected="">A-to-Z</option>
-                                        <option value="alphabeticalOrderSelect2">Z-to-A</option>
+                                    <select class="custom-select custom-select-sm shadow-none" id="alphabetical_order">
+                                        <option value="mostrecent" selected="">Sort by</option>
+                                       
+                                        <option value="a_to_z">A-to-Z</option>
+                                        <option value="z_to_a">Z-to-A</option>
+                                        
+                                       
                                     </select>
                                 </li>
                                 <li class="list-inline-item d-lg-none">
@@ -1048,8 +1055,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="">
-                            <div class="filter-summary-filterList mb-4 list-unstyled">
+                        <div class="">&nbsp;
+                            <div class="filter-summary-filterList mb-4 list-unstyled" style="display: none;">
                                 <div
                                     class="filter-summary-filter d-inline-flex align-items-center position-relative bg-white border fs-13 rounded">
                                     <span data-colorhex="blue" class="filter-summary-colourBox d-inline-block position-relative"
@@ -1082,7 +1089,8 @@
                                 <span class="filter-summary-resetAll">clear all</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="filteredProducts">
+                            <p class="ajaxLoader">Loading...</p>
         
                             {% for product in allProducts %}
                             <div class="col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3">
@@ -1092,8 +1100,8 @@
                                             <img src="{{ product.image.url }}" class="img-fluid" alt="">
                                         </div>
                                         <div class="item-details position-relative">
-                                            <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's
-                                                {{ product.product_name }}</h3>
+                                            <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">
+                                                {{ product.product_name | title }}</h3>
                                             <div class="current-price font-italic font-weight-900 mt-1 fs-16">
                                                 US {{ product.offer_price }}
                                             </div>
@@ -1112,21 +1120,37 @@
         
         
                         </div>
+                        
+                       
+
+
                         <div class="pt-2">
                             <!-- Pagination-->
                             <nav class="pagination border-top d-flex align-items-center justify-content-between">
                                 <div class="column">
+                                    {% if page_obj.has_previous %}
+                                    <a href="?page=1">&laquo; first</a>
+                                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                                    {% endif %}
                                     <ul class="pages">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
+                                        <li class="active"><a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                                        
+                                        {% if page_obj.has_next %}<li>
+                                        <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                                        </li>
                                         <li>...</li>
-                                        <li><a href="#">12</a></li>
+                                        <li>out</li>
+                                        <li style="margin-left: -10px;">of </li>
+                                        <li><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                                        {% endif %}
+                                        <li><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+
                                     </ul>
+                                    <!-- <span class="current">
+                                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                    </span> -->
                                 </div>
-                                <div class="column text-right hidden-xs-down"><a class="btn btn-primary btn-sm"
-                                        href="#">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
+                               
                             </nav>
                         </div>
                         <div class="resize-sensor"

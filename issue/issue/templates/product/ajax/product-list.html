@@ -6,8 +6,8 @@
                 <img src="{{ product.image.url }}" class="img-fluid" alt="">
             </div>
             <div class="item-details position-relative">
-                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">Men's
-                    {{ product.product_name }}</h3>
+                <h3 class="item-details-title overflow-hidden font-weight-400 mt-2 mb-0 fs-13">
+                    {{ product.product_name | title }}</h3>
                 <div class="current-price font-italic font-weight-900 mt-1 fs-16">
                     US {{ product.offer_price }}
                 </div>

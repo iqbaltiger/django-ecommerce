@@ -1,0 +1,111 @@
+{% extends 'frontend/frontend_base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="wrap">
+                    <h1 class="projTitle text-uppercase font-weight-200 text-center py-3 fs-32">Shopping Cart</h1>
+                    <div class="d-flex align-items-center justify-content-between py-3 border-top border-bottom">
+                        <h1 class="fs-24 mb-0">My Cart</h1>
+                        <a href="#" class="btn btn-primary btn-sm btn-pill px-3">Continue Shopping</a>
+                    </div>
+                    <div class="cart">
+                        <ul class="cartWrap m-0 p-0">
+                            {% for cart in cartlist %}
+                            <li class="items odd d-block w-100 align-middle border-bottom py-3 px-3">
+                                <div class="infoWrap d-flex align-items-center justify-content-between w-100">
+                                    <div class="cartSection w-100">
+                                        <img {% if cart.product.image %} src="{{ cart.product.image.url }}" {% endif %} alt=""
+                                            class="itemImg float-left d-block pr-3" width="100" height="100">
+                                        <p class="itemNumber fs-11 text-black-50 mb-1">#QUE-007544-002</p>
+                                        <h3 class="fs-17 mb-3 font-weight-400">{{cart.product.product_name}}</h3>
+                                        <div class="d-flex align-items-center" id="productMainDIv">
+                                            <div class="num-block skin-2">
+                                                <div class="num-in d-flex bg-white border mr-2" id="productQuantity">
+                                                    <span class="minus position-relative dis"></span>
+                                                    <input type="text"  class="in-num product_price text-center border-0"  value="{{cart.quantity}}"
+                                                        readonly="">
+                                                    <span class="plus position-relative"></span>
+                                                </div>
+                                            </div>
+                                            <span class="fs-14" id="productPrice"> x ${{cart.product.sell_price }}</span>
+                                            <span class="stockStatus text-uppercase pl-2 fs-13 font-weight-bold"> In
+                                                Stock</span>
+                                        </div>
+                                    </div>
+                                    <div class="priceSection d-flex" id="totalPriceControl">
+                                        <div class="prodTotal cartSection">
+                                            <p class="fs-21 mb-0 total_price" id="{{  forloop.counter }}">${{ cart.totalprice }}</p>
+                                        </div>
+                                        <div class="cartSection removeWrap ml-3">
+                                            <a href="#"
+                                                class="remove d-flex align-items-center justify-content-center"><i
+                                                    data-feather="trash-2"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+ {% endfor %}
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                    <div class="row justify-content-between mt-5">
+                        <div class="col-md-5 col-lg-5">
+                            <div class="card p-3 promoCode">
+                                <label for="promo">Have A Promo Code?</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Recipient's username"
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            id="button-addon2">Button</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-lg-4 text-right">
+                            <ul class="subtotal list-unstyled">
+                                <li class="sub-total fs-24 font-weight-200">
+                                    <span class="label">Subtotal:</span>
+                                    <span class="value" id="subTotal"></span>
+                                </li>
+
+                                <li class="tax font-weight-200 fs-19 my-2">
+                                    <span class="label" >Taxes (5%):</span>
+                                    <span class="value" id="taxes">8.2 €</span>
+                                </li>
+                                <li class="tax font-weight-200 fs-19 my-2">
+                                    <span class="label">Shipping:</span>
+                                    <span class="value"></span>
+                                </li>
+                            </ul>
+                            <hr>
+                            <div class="site-footer mt-3">
+                                <h1 class="total fs-24 font-weight-200 text-center mb-3">Total: $<span id="allTotal"></span>
+                                </h1>
+                                <a class="btn w-100 font-weight-200 fs-20 text-white"
+                                    href="checkout-details.html">Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

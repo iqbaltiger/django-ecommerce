@@ -1,0 +1,107 @@
+<div class="modal register-modal" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0">
+            <div class="modal-body">
+                <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="accordion" id="accordionExample">
+                    <nav class="nav mb-3">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">Login</a>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">Sign up</a>
+                    </nav>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                        <div class="form-title_wrap mb-3">
+                            <h4 class="form-title mb-0">Login</h4>
+                        </div>
+                        <!--Login Form-->
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" placeholder="Your email address">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password" placeholder="Your password">
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="custom-control custom-checkbox ">
+                                    <input type="checkbox" class="custom-control-input" id="remember">
+                                    <label class="custom-control-label" for="remember">Remember me</label>
+                                </div>
+                                <a href="#" class="forgot d-block text-left" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">Forgot password?</a>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                        <div class="form-title_wrap mb-3">
+                            <h4 class="form-title mb-0">Sign up</h4>
+                        </div>
+                        <!--Register Form-->
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email2" placeholder="Your email address">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="pass" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="c_pass" placeholder="Confirm password">
+                            </div>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Your Password at Global Crypto
+                                    are Encrypted and Secured</label>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block">SIgn up</button>
+                        </form>
+                    </div>
+                    <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                        <div class="form-title_wrap mb-3">
+                            <h4 class="form-title mb-0">Reset</h4>
+                            <p class="des">Enter your email address to retrieve your password.
+                            <p>
+                        </div>
+                        <!--Retrieve password form-->
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email1" placeholder="Email Address">
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="collapse"
+                                data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Retrieve
+                                password</button>
+                        </form>
+                    </div>
+                    <div id="collapseFour" class="collapse" data-parent="#accordionExample">
+                        <div class="form-title_wrap mb-3">
+                            <h4 class="form-title mb-0">Reset Your Password</h4>
+                        </div>
+                        <!--Retrieve password form-->
+                        <form>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Verification code">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="New Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password">
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block">Retrieve password</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <div class="signup-section">Not a member yet? <a href="#a" class="text-primary" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Sign Up</a>.</div>
+            </div>
+        </div>
+    </div>
+</div>

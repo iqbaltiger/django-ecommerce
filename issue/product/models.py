@@ -135,3 +135,20 @@ class Product(models.Model):
            self.product_name = self.product_name.lower()
    
         return super(Product, self).save(*args, **kwargs)
+
+class Cart(models.Model):
+
+    product = models.ForeignKey(Product, on_delete=models.PROTECT,
+                                related_name='product_cart', blank=True, null=True)
+
+    quantity = models.IntegerField()
+
+    @property
+    def totalprice(self):
+        return self.quantity * self.product.sell_price
+
+
+
+    def __str__(self):
+
+        return '%s,%s' %(self.product,self.quantity)                         

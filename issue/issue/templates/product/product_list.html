@@ -59,15 +59,15 @@
     {% for product in productlist %}
         <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td>{% if product.product_name %}{{ product.product_name }} {% endif %}</td>
+        <td>{% if product.product_name %}{{ product.product_name |title }} {% endif %}</td>
         
         <td>{% if product.category %}{{ product.category }} {% endif %}</td>
         <td>{% if product.image %} <img src="{{ product.image.url }}" width="80" height="80"> {% endif %}</td>
-        <td>{% if product.brand %}{{ product.brand }} {% endif %}</td>
+        <td>{% if product.brand %}{{ product.brand |title }} {% endif %}</td>
         <td>{% if product.unit %}{{ product.unit }} {% endif %}</td>
         <td>{% if product.supplier_price %}{{ product.supplier_price }} {% endif %}</td>
         <td>{% if product.sell_price %}{{ product.sell_price }} {% endif %}</td>
-        <td>{% if product.supplier %}{{ product.supplier }} {% endif %}</td>
+        <td>{% if product.supplier %}{{ product.supplier |title }} {% endif %}</td>
         <td> <a class="btn btn-info" target="_blank" href="{% url 'productdetails' product.id %}"
                     >Details</a</td>
         

@@ -40,7 +40,7 @@
     {% for brand in brandlist %}
         <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td>{% if brand.brand_name %}{{ brand.brand_name }} {% endif %}</td>
+        <td>{% if brand.brand_name %}{{ brand.brand_name |title }} {% endif %}</td>
         
         <td>{% if brand.brand_image %} <img src="{{ brand.brand_image.url }}" width="80" height="80"> {% endif %}</td>
         <td>{% if brand.website %}<a href="{{ brand.website }}">{{ brand.website }}</a> {% else %} - {% endif %}</td>
