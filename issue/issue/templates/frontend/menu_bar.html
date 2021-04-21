@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <div class="navbar-sticky border-bottom">
     <div class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -50,23 +51,26 @@
                 </a>
                 <div class="navbar-tool dropdown ml-3">
                     <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="wishlist.html"><span
-                            class="navbar-tool-label">4</span><i data-feather="shopping-cart"
+                            class="navbar-tool-label">{{ products_in_cart }}</span><i data-feather="shopping-cart"
                             class="navbar-tool-icon"></i></a>
-                    <a class="navbar-tool-text" href="wishlist.html"><small>My Cart</small>$1,247.00</a>
+                    <a class="navbar-tool-text" href="wishlist.html"><small>My Cart</small>&nbsp;</a>
                     <!-- Cart dropdown-->
                     <div class="cart-dropdown dropdown-menu dropdown-menu-right shadow border-0 rounded px-3 pt-2 pb-3">
+
+                        {% for cart in cartlist %}
                         <div class="dropdown-product-item media py-2">
-                            <a class="dropdown-product-thumb overflow-hidden bg-gray d-block" href="details.html"><img
-                                    src="assets/img/cart-dropdown/01.jpg" alt="Product" /></a>
+                            <a class="dropdown-product-thumb overflow-hidden bg-gray d-block" href=""><img
+                                    src="{{ cart.product.image.url }}" alt="Product" /></a>
                             <div class="dropdown-product-info media-body pl-3 pr-2">
-                                <a class="dropdown-product-title fs-15" href="details.html">LG GX 65 inch Class with
-                                    Gallery Design 4K Smart OLED TV w/AI ThinQ® (64.5" Diag)</a>
-                                <span class="dropdown-product-details fs-14 text-muted">1 x $43.90</span>
+                                <a class="dropdown-product-title fs-15" href="{% url 'productdetails' cart.product.id  %}">{{cart.product.product_name}}</a>
+                                <span class="dropdown-product-details fs-14 text-muted">{{cart.quantity}} x ${{cart.product.sell_price }}</span>
                             </div>
                             <span class="dropdown-product-remove align-self-center text-primary"><i
                                     data-feather="x"></i></span>
                         </div>
-                        <div class="dropdown-product-item media py-2">
+
+                        {% endfor %}
+                        <!-- <div class="dropdown-product-item media py-2">
                             <a class="dropdown-product-thumb overflow-hidden bg-gray d-block" href="details.html"><img
                                     src="assets/img/cart-dropdown/02.jpg" alt="Product" /></a>
                             <div class="dropdown-product-info media-body pl-3 pr-2">
@@ -76,8 +80,8 @@
                             </div>
                             <span class="dropdown-product-remove align-self-center text-primary"><i
                                     data-feather="x"></i></span>
-                        </div>
-                        <div class="dropdown-product-item media py-2">
+                        </div> -->
+                        <!-- <div class="dropdown-product-item media py-2">
                             <a class="dropdown-product-thumb overflow-hidden bg-gray d-block" href="details.html"><img
                                     src="assets/img/cart-dropdown/03.jpg" alt="Product" /></a>
                             <div class="dropdown-product-info media-body pl-3 pr-2">
@@ -87,13 +91,13 @@
                             </div>
                             <span class="dropdown-product-remove align-self-center text-primary"><i
                                     data-feather="x"></i></span>
-                        </div>
+                        </div> -->
                         <div class="toolbar-dropdown-group d-flex justify-content-between font-weight-500 mb-2">
                             <div class="column"><span>Total:</span></div>
-                            <div class="column"><span>$289.68&nbsp;</span></div>
+                            <div class="column"><span>&nbsp;</span></div>
                         </div>
                         <div class="row no-gutters toolbar-dropdown-group">
-                            <div class="col pr-2"><a class="btn btn-block btn-primary" href="wishlist.html">View
+                            <div class="col pr-2"><a class="btn btn-block btn-primary" href="{% url 'cartlist' %}">View
                                     Cart</a></div>
                             <div class="col pl-2"><a class="btn btn-block btn-success"
                                     href="checkout-details.html">Checkout</a></div>

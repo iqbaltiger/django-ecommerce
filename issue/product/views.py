@@ -4,7 +4,7 @@ from .forms import categoryForm, supplierForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from .models import Category, Brand, Variant, Unit, Currency, Supplier, Product, Cart
+from .models import Category, Brand, Variant, Unit, Currency, Supplier, Product, Cart, User
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -135,6 +135,7 @@ class VariantDelete(SuccessMessageMixin, DeleteView):
     success_url = "/product/variantlist/"
     success_message = "%(variant_name)s has been deleted successfully"
 
+
 ###Unit####
 
 
@@ -165,6 +166,7 @@ class UnitDelete(SuccessMessageMixin, DeleteView):
     success_url = "/product/unitlist/"
     success_message = "%(unit_name)s has been deleted successfully"
 
+
 ###Currency####
 
 
@@ -194,6 +196,7 @@ class CurrencyDelete(SuccessMessageMixin, DeleteView):
     model = Currency
     success_url = "/product/currencylist/"
     success_message = "%(currency_name)s has been deleted successfully"
+
 
 # Supplier
 
@@ -228,6 +231,7 @@ class SupplierDelete(SuccessMessageMixin, DeleteView):
     template_name = 'product/supplier/supplier_confirm_delete.html'
     success_url = "/product/supplierlist/"
     success_message = "%(supplier_name)s has been deleted successfully"
+
 
 # Product
 
@@ -264,6 +268,13 @@ class ProductDelete(SuccessMessageMixin, DeleteView):
 class ProductDetails(SuccessMessageMixin, DetailView):
     model = Product
     template_name = 'product/product_front_store.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products_in_cart'] = Cart.objects.count()
+        context['cartlist'] = Cart.objects.all()
+
+        return context
 
 
 class CategoryDetails(SuccessMessageMixin, ListView):
@@ -409,4 +420,9 @@ class CartList(SuccessMessageMixin, ListView):
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
 
+
+class Checkout(SuccessMessageMixin, CreateView):
+    model = User
+    fields = '__all__'
+    template_name = 'product/checkout.html'
 

@@ -21,7 +21,12 @@ $.ajax({
 				
                 $("#addToCart").hide();
 
-				//$("#filteredProducts").html(res.data);
+				$("#filteredProducts").html(res.data);
+
+				$("#filteredProducts").html(res.data);
+				alert("Added To Cart Successfully!")
+
+
 				
 			},
             error: function (response) {

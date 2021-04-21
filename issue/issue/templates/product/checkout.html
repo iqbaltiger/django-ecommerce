@@ -1,0 +1,200 @@
+{% extends 'frontend/frontend_base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+
+    <h2>Checkout Page:</h2>
+    <div class="container pb-5" style="transform: none;">
+            <!--Breadcrumb-->
+            <nav aria-label="breadcrumb" class="my-4">
+                <ol class="breadcrumb d-inline-flex mb-0">
+                    <li class="breadcrumb-item align-items-center"><a href="#" class="d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home mr-2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home</a></li>
+                    <li class="breadcrumb-item align-items-center"><a href="#" class="d-flex align-items-center">TV</a></li>
+                    <li class="breadcrumb-item align-items-center"><a href="#" class="d-flex align-items-center">Audio</a></li>
+                    <li class="breadcrumb-item align-items-center"><a href="#" class="d-flex align-items-center">Video</a></li>
+                    <li class="breadcrumb-item align-items-center"><a href="#" class="d-flex align-items-center">Home Audio</a></li>
+                    <li class="breadcrumb-item align-items-center active" aria-current="page">SN10YG</li>
+                </ol>
+            </nav>
+            <div class="order-tracking-one pb-5">
+                <!-- Progress-->
+                <div class="steps">
+                    <div class="steps-header">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="steps-body w-100">
+                        <div class="step position-relative font-weight-500 text-center step-completed">
+                            <span class="step-indicator d-block position-absolute"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></span>Cart</div>
+                        <div class="step position-relative font-weight-500 text-center step-completed">
+                            <span class="step-indicator d-block position-absolute"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>Your details</div>
+                        <div class="step position-relative font-weight-500 text-center step-active"><span class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span>Shipping</div>
+                        <div class="step position-relative font-weight-500 text-center"><span class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></span>Payment</div>
+                        <div class="step position-relative font-weight-500 text-center"><span class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>Review</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="transform: none;">
+                <div class="col-md-8 mainContent" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+
+
+
+
+
+
+
+                <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px;">
+                    <form action ="." method="POST">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-fn">First Name</label>
+                               {{ form.first_name|addcss:'form-control' }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-ln">Last Name</label>
+                               {{ form.last_name|addcss:'form-control' }}
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-email">E-mail Address</label>
+                                {{ form.email|addcss:'form-control' }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-phone">Phone Number</label>
+                                {{ form.phone|addcss:'form-control' }}
+                            </div>
+                        </div>
+                    </div><div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-company">Company</label>
+                               {{ form.company|addcss:'form-control' }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-country">Country</label>
+                                {{ form.country|addcss:'form-control' }}
+                            </div>
+                        </div>
+                    </div><div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-city">City</label>
+                                {{ form.city|addcss:'form-control' }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-zip">ZIP Code</label>
+                                {{ form.zip_code|addcss:'form-control' }}
+                            </div>
+                        </div>
+                    </div><div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-address-1">Address 1</label>
+                                {{ form.address_one|addcss:'form-control' }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="font-weight-500" for="checkout-address-2">Address 2</label>
+                                {{ form.address_two|addcss:'form-control' }}
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                        <h6 class="mb-3 py-3 border-bottom">Billing address</h6><div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" checked="" id="same-address">
+                        <label class="custom-control-label" for="same-address">Same as shipping address</label>
+                    </div><div class="steps-btn d-none d-lg-flex pt-4 mt-3">
+                        <div class="w-50 pr-3"><a class="btn btn-secondary btn-block" href="wishlist.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left mr-2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
+                        <div class="w-50 pl-2"><div class="btn btn-primary btn-block" href="checkout-shipping.html"><span class="d-none d-sm-inline">Proceed to Shipping</span><span class="d-inline d-sm-none">Next</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart ml-2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div></div>
+                    </div><div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 904px; height: 651px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div></div>
+                <div class="col-md-4 pl-xl-5 rightSidebar" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+
+
+                <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;"><div class="d-flex align-items-center justify-content-between mb-2">
+                        <h2 class="fs-19 pb-3 mb-0">Summary</h2>
+                        <span class="badge badge-pill badge-soft-success">3 items</span>
+                    </div><div class="card shadow-none" id="card-summary">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="media align-items-center">
+                                        <img alt="Image placeholder" class="mr-2" src="{% static 'front_assets/img/cart/sm-01.jpg' %}" width="64">
+                                        <div class="media-body">
+                                            <h5 class="fs-16 mb-1">Women Color block Sneakers</h5>
+                                            <div class="text-black-50 fs-14">2 x $23.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-dark text-right">
+                                    $46.00
+                                </div>
+                            </div>
+                            <div class="row mt-3 pt-3 delimiter-top">
+                                <div class="col-9">
+                                    <div class="media align-items-center">
+                                        <img alt="Image placeholder" class="mr-2" src="{% static 'front_assets/img/cart/sm-02.jpg' %}" width="64">
+                                        <div class="media-body">
+                                            <h5 class="fs-16 mb-1">TH Jeans City Backpack</h5>
+                                            <div class="text-black-50 fs-14">2 x $49.50</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-dark text-right">
+                                    $99.00
+                                </div>
+                            </div>
+                            <div class="row mt-3 pt-3 delimiter-top">
+                                <div class="col-9">
+                                    <div class="media align-items-center">
+                                        <img alt="Image placeholder" class=" mr-2" src="{% static 'front_assets/img/cart/sm-03.jpg' %}" width="64">
+                                        <div class="media-body">
+                                            <h5 class="fs-16 mb-1">Women running shoes</h5>
+                                            <div class="text-black-50 fs-14">2 x $99.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-dark text-right">
+                                    $198.00
+                                </div>
+                            </div>
+                            <ul class="list-unstyled font-weight-500 pb-2 border-top mt-3 pt-3">
+                                <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Subtotal:</span><span class="text-right">$265.<small>00</small></span></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Shipping:</span><span class="text-right">—</span></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Taxes:</span><span class="text-right">$9.<small>50</small></span></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Discount:</span><span class="text-right">—</span></li>
+                            </ul>
+                        </div>
+                    </div><div class="card shadow-none mb-0">
+                        <div class="card-body">
+                            <h3 class="fs-18 mb-1">Apply Discount</h3>
+                            <p class="fs-14">Have a discount/ promo code to redeem</p>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Promo Code">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;"><div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 456px; height: 651px;"></div></div><div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;"><div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div></div></div></div></div>
+            </div>
+        </div>
+{% endblock content %}

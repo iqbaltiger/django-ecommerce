@@ -73,7 +73,12 @@ urlpatterns = [
          CartDetails.as_view(), name="cartdetails"),
 
     path('addToCart/', views.addToCart, name="addToCart"),
-    path('cart/',CartList.as_view(),name="cartlist")
+    path('cart/',CartList.as_view(),name="cartlist"),
+
+    #Checkout
+
+
+    path('checkout/',Checkout.as_view(),name="checkout")
          
 ]
 
